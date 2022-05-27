@@ -1,0 +1,8 @@
+//
+// File created by:  irun
+// Do not modify this file
+
+s1::(27May2022:16:53:46):( ncverilog tb.v SW.v +define+tb1 )
+s2::(27May2022:18:59:20):( ncverilog tb.v SW.v +define+tb1 )
+s3::(27May2022:18:59:46):( ncverilog tb.v SW.v +define+tb1 )
+s4::(27May2022:19:01:54):( ncverilog tb.v SW.v +define+tb1 )

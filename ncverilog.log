@@ -1,0 +1,35 @@
+ncverilog: 15.20-s084: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s084: Started on May 27, 2022 at 19:01:54 CST
+ncverilog
+	tb.v
+	SW.v
+	+define+tb1
+file: SW.v
+                    D_boundary_w = D_boundary_r;
+                               |
+ncvlog: *E,UNDIDN (SW.v,179|31): 'D_boundary_w': undeclared identifier [12.5(IEEE)].
+                    I_boundary_w = I_boundary_r;
+                               |
+ncvlog: *E,UNDIDN (SW.v,180|31): 'I_boundary_w': undeclared identifier [12.5(IEEE)].
+                    H_boundary_w = H_boundary_r;
+                               |
+ncvlog: *E,UNDIDN (SW.v,181|31): 'H_boundary_w': undeclared identifier [12.5(IEEE)].
+                    H_boundary_w = H_boundary_r;
+                                              |
+ncvlog: *E,UNDIDN (SW.v,181|46): 'H_boundary_r': undeclared identifier [12.5(IEEE)].
+                D_boundary_w = D_boundary_r;
+                           |
+ncvlog: *E,UNDIDN (SW.v,219|27): 'D_boundary_w': undeclared identifier [12.5(IEEE)].
+                I_boundary_w = I_boundary_r;
+                           |
+ncvlog: *E,UNDIDN (SW.v,220|27): 'I_boundary_w': undeclared identifier [12.5(IEEE)].
+                H_boundary_w = H_boundary_r;
+                           |
+ncvlog: *E,UNDIDN (SW.v,221|27): 'H_boundary_w': undeclared identifier [12.5(IEEE)].
+                H_boundary_w = H_boundary_r;
+                                          |
+ncvlog: *E,UNDIDN (SW.v,221|42): 'H_boundary_r': undeclared identifier [12.5(IEEE)].
+	module worklib.SW:v
+		errors: 8, warnings: 0
+ncverilog: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+TOOL:	ncverilog	15.20-s084: Exiting on May 27, 2022 at 19:01:54 CST  (total: 00:00:00)
