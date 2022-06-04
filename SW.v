@@ -1,3 +1,27 @@
+module PE ()
+    input  [1:0]  query;
+    input  [1:0]  ref;
+    input  [5:0]  H_l, H_u, H_lu, I_u, D_l;
+    output [5:0]  H, I, D;
+    wire signed [3:0] S;
+    I = (H_u - 6'd2) > (I_u - 6'd1) ? (H_u - 6'd2) : (I_u - 6'd1);
+    D = (H_l - 6'd2) > (D_l - 6'd1) ? (H_l - 6'd2) : (I_l - 6'd1);
+    S = (ref == query) ? 2 : -1;
+    if (H_lu + S >= I && H_lu + S >= D && H_lu + S >= 0) begin
+        H = H_lu + S;
+    end
+    else if (I >= H_lu + S && I >= D && I >= 0) begin
+        H = I;
+    end
+    else if (D >= H_lu + S && D >=I && D >= 0) begin
+        H = D;
+    end
+    else begin
+        H = 6'd0;
+    end
+
+endmodule
+
 module SW #(parameter WIDTH_SCORE = 8, parameter WIDTH_POS_REF = 7, parameter WIDTH_POS_QUERY = 6)
 (
     input           clk,
@@ -48,8 +72,8 @@ reg  signed [5:0]  I_PE_w[0:15];
 reg  signed [5:0]  H_PE_r[0:15];
 reg  signed [5:0]  H_PE_w[0:15];
 
-reg         [4:0]  index_i, index_i_nxt;    // num = 16
-reg         [3:0]  index_j, index_j_nxt;    // num = 12 
+reg         [6:0]  index_i, index_i_nxt;    // num = 64
+reg         [5:0]  index_j, index_j_nxt;    // num = 48 
 reg         [2:0]  state, state_nxt;
 reg         [5:0]  counter_R, counter_R_nxt; // num = 64
 reg         [5:0]  counter_Q, counter_Q_nxt; // num = 48
@@ -161,69 +185,22 @@ assign      pos_query = pos_query_r;
     always @(*) begin
         case (state)
             CAL: begin
-
-                // default value when (0, 0)
-                if (counter_cal == 0) begin
-                    for (i = 0; i < 4; i = i + 1) begin
-                        new_I_w[i] = -20;
-                    end
-                    for (i = 0; i < 5; i = i + 1) begin
-                        new_H_1_w[i] = 0;
-                    end
-                    for (i = 0; i < 48; i = i + 1) begin
-                        new_D_w[i] = -20;
-                        new_H_1_w[i] = 0;
-                    end
+                if (index_i == 1 && index_j == 1) begin
+                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
                 end
-                else begin
-                    D_boundary_w = D_boundary_r;
-                    I_boundary_w = I_boundary_r;
-                    H_boundary_w = H_boundary_r;
+                else if (index_i == 2 && index_j == 1) begin
+                    PE1(H_H[1], H_H[2], H_V[0], I[1], D[0], I_w[1], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[1], I_w[0], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
                 end
-
-                // calculate PEs
-
-                for (j = 0; j < 4; j = j + 1) begin
-                    for (i = 0; i < 4; i = i + 1) begin
-                        if (i == 0 && j == 0) begin
-                            // I_PE_w[i + 4*j] = ((H_boundary_r[i+1] - g_open) > (I_boundary_r[i] - g_extend))?
-                            //                 (H_boundary_r[i+1] - g_open) : (I_boundary_r[i] - g_extend);
-                            // D_PE_w[i + 4*j] = ((H_boundary_r[index_j*4+5+j] - g_open) > (D_boundary_r[index_j*4+j] - g_extend))?
-                            //                 (H_boundary_r[index_j*4+5+j] - g_open) : (I_boundary_r[index_j*4+j] - g_extend);
-                            // H_PE_w[i + 4*j] = ((H_boundary_r[i+index_j*4+j] + ((R[index_i*4+i] == Q[index_j*4+j])? match: mismatch)) > 0)?
-                            //                 (H_boundary_r[i+index_j*4+j] + ((R[index_i*4+i] == Q[index_j*4+j])? match: mismatch)): 0;
-                        end
-                        else begin
-                            
-                        end
-                    end
+                else if (index_i == 3 && index_j == 1) begin
+                    PE1(H_H[1], H_H[2], H_V[0], I[2], D[0], I_w[2], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                    PE2(H_H[0], H_H[1], H_V[0], I[1], D[1], I_w[1], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
+                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[2], I_w[0], D_w[2], H_H_w[0], H_H_w[1], H_V_w[0]);
                 end
-
-                if (index_j < 12) begin
-                    index_j_nxt = index_j + 1;
-                    index_i_nxt = index_i;
-                end
-                else begin
-                    index_j_nxt = 0;
-                    index_i_nxt = index_i + 1;
-                end
-                counter_cal_nxt = counter_cal + 1;
-
-
             end
-            
-            
-
-
             default: begin
-                D_boundary_w = D_boundary_r;
-                I_boundary_w = I_boundary_r;
-                H_boundary_w = H_boundary_r;
-                index_j_nxt = index_j;
-                index_i_nxt = index_i;
-                counter_cal_nxt = counter_cal;
+                
             end
-
         endcase
     end
 
