@@ -115,7 +115,7 @@ assign      pos_query = pos_query_r;
                     state_nxt = IDLE;
             end
             READ: begin
-                if (counter_R == 64 && counter_Q == 48)
+                if (counter_R == 64 && counter_Q == 48) // The last item is read
                     state_nxt = CAL;
                 else
                     state_nxt = READ;
@@ -129,7 +129,7 @@ assign      pos_query = pos_query_r;
             READY: begin
                 state_nxt = IDLE;
             end
-            default: state_nxt = state;
+            default: state_nxt = state; // The next state is default to be the current state
 
         endcase
     
@@ -185,18 +185,20 @@ assign      pos_query = pos_query_r;
     always @(*) begin
         case (state)
             CAL: begin
+                // if (index_i == 1 && index_j == 1) begin
+                //     PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 2 && index_j == 1) begin
+                //     PE1(H_H[1], H_H[2], H_V[0], I[1], D[0], I_w[1], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                //     PE2(H_H[0], H_H[1], H_V[0], I[0], D[1], I_w[0], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 3 && index_j == 1) begin
+                //     PE1(H_H[1], H_H[2], H_V[0], I[2], D[0], I_w[2], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                //     PE2(H_H[0], H_H[1], H_V[0], I[1], D[1], I_w[1], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
+                //     PE3(H_H[0], H_H[1], H_V[0], I[0], D[2], I_w[0], D_w[2], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
                 if (index_i == 1 && index_j == 1) begin
-                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 2 && index_j == 1) begin
-                    PE1(H_H[1], H_H[2], H_V[0], I[1], D[0], I_w[1], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[1], I_w[0], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 3 && index_j == 1) begin
-                    PE1(H_H[1], H_H[2], H_V[0], I[2], D[0], I_w[2], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                    PE2(H_H[0], H_H[1], H_V[0], I[1], D[1], I_w[1], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
-                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[2], I_w[0], D_w[2], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
+                    
             end
             default: begin
                 
