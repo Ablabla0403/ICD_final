@@ -1,8 +1,8 @@
-module PE ()
+module PE (query, ref, H_lu, H_l, H_u, I, D, H, I, D)
     input  [1:0]  query;
     input  [1:0]  ref;
-    input  [5:0]  H_l, H_u, H_lu, I_u, D_l;
-    output [5:0]  H, I, D;
+    input  signed [5:0]  H_l, H_u, H_lu, I_u, D_l;
+    output signed [5:0]  H, I, D;
     wire signed [3:0] S;
     I = (H_u - 6'd2) > (I_u - 6'd1) ? (H_u - 6'd2) : (I_u - 6'd1);
     D = (H_l - 6'd2) > (D_l - 6'd1) ? (H_l - 6'd2) : (I_l - 6'd1);
@@ -186,8 +186,9 @@ assign      pos_query = pos_query_r;
         case (state)
             CAL: begin
                 // case for PE1
-                if (index_i == 1) begin
-                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                if (index_i == 1 && index_j == 0) begin
+                    PE1(6'b0, 6'b0, 6'b0, -15, -15, I_w[0], D_w[0], H_w[0]);
+                    $display("I = %i, D = %i, H = %i", I_w[0], D_w[0],  H_w[0]);
                 end
                 else if (index_i == 64) begin
                     PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
@@ -303,6 +304,17 @@ assign      pos_query = pos_query_r;
                     PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
                 end
                 // end of case PE8
+                if (index_i < 64) begin
+                    index_i_nxt = index_i + 6'b1;
+                    index_j_nxt = index_j;
+                end
+                else if(index_i == 64 && index_j < 48) begin
+                    index_i_nxt = 6'b0;
+                    index_j_nxt = index_j + 6'b1;
+                end
+                else begin
+                    finish_w = 1;
+                end
             end
             default: begin
                 
