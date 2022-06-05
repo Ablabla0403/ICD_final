@@ -185,20 +185,124 @@ assign      pos_query = pos_query_r;
     always @(*) begin
         case (state)
             CAL: begin
-                // if (index_i == 1 && index_j == 1) begin
-                //     PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                // end
-                // else if (index_i == 2 && index_j == 1) begin
-                //     PE1(H_H[1], H_H[2], H_V[0], I[1], D[0], I_w[1], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                //     PE2(H_H[0], H_H[1], H_V[0], I[0], D[1], I_w[0], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
-                // end
-                // else if (index_i == 3 && index_j == 1) begin
-                //     PE1(H_H[1], H_H[2], H_V[0], I[2], D[0], I_w[2], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                //     PE2(H_H[0], H_H[1], H_V[0], I[1], D[1], I_w[1], D_w[1], H_H_w[0], H_H_w[1], H_V_w[0]);
-                //     PE3(H_H[0], H_H[1], H_V[0], I[0], D[2], I_w[0], D_w[2], H_H_w[0], H_H_w[1], H_V_w[0]);
-                // end
-                if (index_i == 1 && index_j == 1) begin
-                    
+                // case for PE1
+                if (index_i == 1) begin
+                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 64) begin
+                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+
+                // case for PE2
+                if (index_i > 1 && index_i <= 64) begin
+                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 1 && index_j > 1) begin 
+                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE2
+
+                // case for PE3
+                if ((index_i > 2 && index_i < 64) || index_i == 1) begin
+                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 2 && index_j > 1) begin 
+                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE3
+
+                // case for PE4
+                if ((index_i > 3 && index_i < 64) || index_i < 3) begin
+                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 2 && index_j > 1) begin 
+                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE4
+
+                // case for PE4
+                if ((index_i > 3 && index_i < 64) || index_i < 3) begin
+                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 2 && index_j > 1) begin 
+                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE4
+
+                // case for PE5
+                if ((index_i > 4 && index_i < 64) || index_i < 4) begin
+                    PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 4 && index_j > 1) begin 
+                    PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE5
+
+                // case for PE6
+                if ((index_i > 5 && index_i < 64) || index_i < 5) begin
+                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 5 && index_j > 1) begin 
+                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE6
+
+                // case for PE6
+                if ((index_i > 5 && index_i < 64) || index_i < 5) begin
+                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 5 && index_j > 1) begin 
+                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE6
+
+                // case for PE7
+                if ((index_i > 6 && index_i < 64) || index_i < 6) begin
+                    PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 6 && index_j > 1) begin
+                    PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE7
+
+                // case for PE8
+                if ((index_i > 7 && index_i < 64) || index_i < 7) begin
+                    PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else if (index_i == 7 && index_j > 1) begin
+                    PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                else begin
+                    PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                end
+                // end of case PE8
             end
             default: begin
                 
