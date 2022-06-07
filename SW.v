@@ -218,9 +218,6 @@ assign      pos_query = pos_query_r;
     always @(*) begin
         case (state)
             CAL: begin
-
-                // calculate the max
-                
                 
                 // case for PE1
                     if (index_i[0] == 1 && index_j[0] == 1) begin
@@ -245,11 +242,11 @@ assign      pos_query = pos_query_r;
                         PE_R[0] = R[index_i[0]];
                         PE_Q[0] = Q[index_j[0]];
                         PE_H_S[0] = 8'b0;
-                        PE_H_V[0] = H_last[0];
+                        PE_H_V[0] = H_last[1];
                         PE_H_H[0] = 8'b0;
-                        PE_I_V[0] = I_last[0];
+                        PE_I_V[0] = I_last[1];
                         PE_D_H[0] = -8'd32;
-                        // $display("I_last[0] = %d, H_last[0] = %d, index_i[0] = %d, index_j[0] = %d", I_last[0], H_last[0], index_i[0], index_j[0]);
+                        // $display("I_last[0] = %d, H_last[0] = %d, index_i[0] = %d, index_j[0] = %d", I_last[1], H_last[1], index_i[0], index_j[0]);
                     end
                     else begin
                         PE_R[0] = R[index_i[0]];
@@ -259,9 +256,12 @@ assign      pos_query = pos_query_r;
                         PE_H_H[0] = H_out[0];
                         PE_I_V[0] = I_last[index_i[0]];
                         PE_D_H[0] = D_out[0];
+                        // if(index_j[0] == 5) begin
                         // $display("index_i[0] = %d, index_j[0] = %d", index_i[0], index_j[0]);
-                        // $display("H_last - 1 = %d, D = %d, H = %d", H_last[index_i[0] - 1], H_last[index_i[0]],  I_last[index_i[0]]);
+                        // $display("H_last - 1 = %d, H_last = %d, I = %d", H_last[index_i[0] - 1], H_last[index_i[0]],  I_last[index_i[0]]);
+                        // end
                     end
+
                 
 
                 // case for PE2
@@ -466,6 +466,32 @@ assign      pos_query = pos_query_r;
 
                 // index for PE1
                 // $display("index_i[1] = %d, index_f[1] = %d", index_i[1], index_j[1]);
+
+                // calculate the max
+                if (H[0] > max_r) begin
+                    max_w = H[0];
+                    pos_ref_w = index_i[0];
+                    pos_query_w = index_j[0];
+                end
+                else if (H[1] > max_r) begin
+                    max_w = H[1];
+                    pos_ref_w = index_i[1];
+                    pos_query_w = index_j[1];
+                end
+                else if (H[2] > max_r) begin
+                    max_w = H[2];
+                    pos_ref_w = index_i[2];
+                    pos_query_w = index_j[2];
+                end
+                else if (H[3] > max_r) begin
+                    max_w = H[3];
+                    pos_ref_w = index_i[3];
+                    pos_query_w = index_j[3];
+                end
+                else begin
+                    max_w = max_r;
+                end
+
                 if (index_i[0] < 7'd64) begin
                     index_i_nxt[0] = index_i[0] + 7'b1;
                     index_j_nxt[0] = index_j[0];
@@ -486,13 +512,14 @@ assign      pos_query = pos_query_r;
                 end
 
                 // index for PE2
-                if (index_i[1] < 7'd64 && index_i[0] > 1) begin
+                if (index_i[1] < 7'd64 && ((index_i[0] > 1) || (index_j[0] > 1))) begin
                     index_i_nxt[1] = index_i[1] + 7'b1;
                     index_j_nxt[1] = index_j[1];
+                    $display("index_j[1] = %d", index_j[1]);
                 end
                 else if(index_i[1] == 7'd64 && index_j[1] < 7'd46) begin
                     index_i_nxt[1] = 7'b1;
-                    index_j_nxt[1] = index_j[0] + 7'd4;
+                    index_j_nxt[1] = index_j[1] + 7'd4;
                 end
                 else begin
                     index_i_nxt[1] = index_i[1];
@@ -500,7 +527,7 @@ assign      pos_query = pos_query_r;
                 end
 
                 // index for PE3
-                if (index_i[2] < 7'd64 && index_i[0] > 2) begin
+                if (index_i[2] < 7'd64 && ((index_i[0] > 2) || (index_j[0] > 1))) begin
                     index_i_nxt[2] = index_i[2] + 7'b1;
                     index_j_nxt[2] = index_j[2];
                 end
@@ -514,7 +541,7 @@ assign      pos_query = pos_query_r;
                 end
 
                 // index for PE4
-                if (index_i[3] < 7'd64 && index_i[0] > 3) begin
+                if (index_i[3] < 7'd64 && ((index_i[0] > 3) || (index_j[0] > 1))) begin
                     index_i_nxt[3] = index_i[3] + 7'b1;
                     index_j_nxt[3] = index_j[3];
                 end
@@ -616,32 +643,14 @@ assign      pos_query = pos_query_r;
             D_out[3] <= D[3];
             H_last[index_i[3]] <= H[3];
             I_last[index_i[3]] <= I[3];
-            if (H_out[0] > max_r) begin
-                max_w = H_out[0];
-                pos_ref_w = index_i[0];
-                pos_query_w = index_j[0];
-            end
-            else if (H_out[1] > max_r) begin
-                max_w = H_out[1];
-                pos_ref_w = index_i[1];
-                pos_query_w = index_j[1];
-            end
-            else if (H_out[2] > max_r) begin
-                max_w = H_out[2];
-                pos_ref_w = index_i[2];
-                pos_query_w = index_j[2];
-            end
-            else if (H_out[3] > max_r) begin
-                max_w = H_out[3];
-                pos_ref_w = index_i[3];
-                pos_query_w = index_j[3];
-            end
-            else begin
-                max_w = max_r;
-            end
+            
             // $display("H_out[0] = %d, H_out[1] = %d, H_out[2] = %d, H_out[3] = %d, max_r = %d", H_out[0], H_out[1], H_out[2], H_out[3], max_r);
-            if (index_i[0] == 3 && index_j[0] == 5)
-                $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[0], D_out[0],  H_out[0], index_i[0], index_j[0], H_out_previous[0]);
+            // if (index_j[2] == 15)
+            //     $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[2], D_out[2],  H_out[2], index_i[2], index_j[2], H_out_previous[2]);
+            // if (index_j[0] == 17)
+            //     $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[0], D_out[0],  H_out[0], index_i[0], index_j[0], H_out_previous[2]);
+            if (index_j[1] == 14)
+                $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[1], D_out[1],  H_out[1], index_i[1], index_j[1], H_out_previous[1]);
         end
     end
     

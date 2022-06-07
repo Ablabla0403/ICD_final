@@ -1,901 +1,1631 @@
 ncverilog: 15.20-s084: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s084: Started on Jun 08, 2022 at 00:48:10 CST
+TOOL:	ncverilog	15.20-s084: Started on Jun 08, 2022 at 03:04:01 CST
 ncverilog
 	tb.v
 	SW.v
-	+define+tb1
+	+define+tb2
+file: tb.v
+	module worklib.tb:v
+		errors: 0, warnings: 0
+file: SW.v
+	module worklib.PE:v
+		errors: 0, warnings: 0
+	module worklib.SW:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.PE:v <0x5701c08b>
+			streams:   1, words:  1838
+		worklib.SW:v <0x2682124d>
+			streams:  40, words: 41209
+		worklib.tb:v <0x70b0fa64>
+			streams:  10, words: 18831
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  6       3
+		Registers:               80      68
+		Scalar wires:             4       -
+		Vectored wires:          81       -
+		Always blocks:           12       9
+		Initial blocks:           8       8
+		Cont. assignments:        0       4
+		Pseudo assignments:      29      29
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tb:v
 Loading snapshot worklib.tb:v .................... Done
 *Verdi* Loading libsscore_ius152.so
 ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
 ncsim> run
-./dat/ref1.dat, ./dat/query1.dat and ./dat/golden1.dat were used for this simulation.
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    x
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    x, H_out[1] =    x, H_out[2] =    x, H_out[3] =    x, max_r =    0
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    0, H_out[3] =    2, max_r =    0
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    2, max_r =    0
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    0, H_out[3] =    2, max_r =    2
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    2, H_out[3] =    2, max_r =    2
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    3, H_out[3] =    1, max_r =    4
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    4, H_out[3] =    4, max_r =    2
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    2, H_out[3] =    2, max_r =    4
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    2, H_out[3] =    6, max_r =    4
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    0, H_out[3] =    4, max_r =    4
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    3, max_r =    6
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    4
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    3, H_out[3] =    2, max_r =    6
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    1, H_out[3] =    1, max_r =    4
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    0, max_r =    4
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    2, H_out[3] =    2, max_r =    6
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    0, max_r =    4
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    2, H_out[3] =    4, max_r =    6
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    4
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    4, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    3, H_out[3] =    2, max_r =    4
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    1, H_out[3] =    1, max_r =    6
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    2, H_out[3] =    5, max_r =    4
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    3, max_r =    6
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    5
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    2, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    0, max_r =    5
-H_out[0] =    2, H_out[1] =    2, H_out[2] =    2, H_out[3] =    4, max_r =    6
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    0, H_out[3] =    2, max_r =    5
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    1, H_out[3] =    1, max_r =    6
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    5
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    3, H_out[3] =    3, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    3, H_out[3] =    1, max_r =    5
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    1, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    2, H_out[3] =    5, max_r =    5
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    3, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    2, H_out[3] =    4, max_r =    5
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    2, H_out[3] =    4, max_r =    5
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    2, H_out[3] =    4, max_r =    5
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    2, H_out[3] =    4, max_r =    5
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    2, H_out[3] =    4, max_r =    5
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    4, max_r =    5
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    0, H_out[3] =    1, max_r =    5
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    1, H_out[3] =    0, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =    5
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    2, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    1, H_out[3] =    6, max_r =    5
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    4, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    1, H_out[3] =    3, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    0, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    1, H_out[3] =    1, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    1, H_out[3] =    0, max_r =    6
-H_out[0] =    2, H_out[1] =    2, H_out[2] =    1, H_out[3] =    0, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =    6
-H_out[0] =    0, H_out[1] =    4, H_out[2] =    1, H_out[3] =    0, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    2, H_out[3] =    2, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    3, H_out[3] =    1, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    1, H_out[3] =    1, max_r =    6
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    1, H_out[3] =    2, max_r =    6
-H_out[0] =    4, H_out[1] =    0, H_out[2] =    1, H_out[3] =    0, max_r =    6
-I =    0, D =   -2, H =    4, index_i =   3, index_j =  5, H_previous =    0
-H_out[0] =    2, H_out[1] =    2, H_out[2] =    0, H_out[3] =    0, max_r =    6
-H_out[0] =    3, H_out[1] =    3, H_out[2] =    1, H_out[3] =    0, max_r =    6
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    2, H_out[3] =    0, max_r =    6
-H_out[0] =    5, H_out[1] =    3, H_out[2] =    2, H_out[3] =    0, max_r =    6
-H_out[0] =    3, H_out[1] =    6, H_out[2] =    6, H_out[3] =    1, max_r =    6
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    4, H_out[3] =    4, max_r =    6
-H_out[0] =    1, H_out[1] =    3, H_out[2] =    8, H_out[3] =    5, max_r =    6
-H_out[0] =    1, H_out[1] =    2, H_out[2] =    6, H_out[3] =    6, max_r =    6
-H_out[0] =    0, H_out[1] =    3, H_out[2] =    5, H_out[3] =    7, max_r =    8
-H_out[0] =    1, H_out[1] =    1, H_out[2] =    4, H_out[3] =    5, max_r =    6
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    5, H_out[3] =    4, max_r =    8
-H_out[0] =    1, H_out[1] =    0, H_out[2] =    3, H_out[3] =    3, max_r =    6
-H_out[0] =    2, H_out[1] =    2, H_out[2] =    2, H_out[3] =    4, max_r =    8
-H_out[0] =    3, H_out[1] =    1, H_out[2] =    1, H_out[3] =    2, max_r =    6
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    4, H_out[3] =    1, max_r =    8
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    2, H_out[3] =    2, max_r =    6
-H_out[0] =    1, H_out[1] =    1, H_out[2] =    6, H_out[3] =    3, max_r =    8
-H_out[0] =    3, H_out[1] =    5, H_out[2] =    4, H_out[3] =    4, max_r =    6
-H_out[0] =    4, H_out[1] =    3, H_out[2] =    3, H_out[3] =    5, max_r =    8
-H_out[0] =    2, H_out[1] =    5, H_out[2] =    7, H_out[3] =    3, max_r =    6
-H_out[0] =    1, H_out[1] =    3, H_out[2] =    5, H_out[3] =    5, max_r =    8
-H_out[0] =    1, H_out[1] =    2, H_out[2] =    7, H_out[3] =    6, max_r =    7
-H_out[0] =    2, H_out[1] =    3, H_out[2] =    5, H_out[3] =    5, max_r =    8
-H_out[0] =    3, H_out[1] =    1, H_out[2] =    4, H_out[3] =    6, max_r =    7
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    5, H_out[3] =    4, max_r =    8
-H_out[0] =    2, H_out[1] =    2, H_out[2] =    3, H_out[3] =    3, max_r =    7
-H_out[0] =    1, H_out[1] =    3, H_out[2] =    6, H_out[3] =    4, max_r =    8
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    4, H_out[3] =    4, max_r =    7
-H_out[0] =    0, H_out[1] =    3, H_out[2] =    3, H_out[3] =    5, max_r =    8
-H_out[0] =    3, H_out[1] =    4, H_out[2] =    3, H_out[3] =    3, max_r =    7
-H_out[0] =    4, H_out[1] =    2, H_out[2] =    5, H_out[3] =    5, max_r =    8
-H_out[0] =    2, H_out[1] =    5, H_out[2] =    3, H_out[3] =    3, max_r =    7
-H_out[0] =    3, H_out[1] =    3, H_out[2] =    3, H_out[3] =    4, max_r =    8
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    7, H_out[3] =    2, max_r =    7
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    5, H_out[3] =    5, max_r =    8
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    6, H_out[3] =    6, max_r =    7
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    4, H_out[3] =    4, max_r =    8
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    6, H_out[3] =    5, max_r =    7
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    4, H_out[3] =    4, max_r =    8
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    6, H_out[3] =    5, max_r =    7
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    4, H_out[3] =    4, max_r =    8
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    6, H_out[3] =    5, max_r =    7
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    4, H_out[3] =    4, max_r =    8
-H_out[0] =    1, H_out[1] =    1, H_out[2] =    6, H_out[3] =    5, max_r =    7
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    4, H_out[3] =    4, max_r =    8
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    3, H_out[3] =    5, max_r =    7
-H_out[0] =    1, H_out[1] =    2, H_out[2] =    4, H_out[3] =    3, max_r =    8
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    2, H_out[3] =    2, max_r =    7
-H_out[0] =    5, H_out[1] =    3, H_out[2] =    2, H_out[3] =    3, max_r =    8
-H_out[0] =    6, H_out[1] =    3, H_out[2] =    3, H_out[3] =    1, max_r =    7
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    2, H_out[3] =    4, max_r =    8
-H_out[0] =    4, H_out[1] =    5, H_out[2] =    5, H_out[3] =    5, max_r =    7
-H_out[0] =    3, H_out[1] =    3, H_out[2] =    3, H_out[3] =    3, max_r =    8
-H_out[0] =    2, H_out[1] =    3, H_out[2] =    4, H_out[3] =    4, max_r =    7
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    2, H_out[3] =    2, max_r =    8
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    2, H_out[3] =    6, max_r =    7
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    1, H_out[3] =    4, max_r =    8
-H_out[0] =    4, H_out[1] =    1, H_out[2] =    0, H_out[3] =    4, max_r =    7
-H_out[0] =    2, H_out[1] =    2, H_out[2] =    0, H_out[3] =    3, max_r =    8
-H_out[0] =    0, H_out[1] =    3, H_out[2] =    1, H_out[3] =    2, max_r =    7
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =    8
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    0, H_out[3] =    3, max_r =    7
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    1, H_out[3] =    0, max_r =    8
-H_out[0] =    3, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =    7
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    0, H_out[3] =    0, max_r =    8
-H_out[0] =    7, H_out[1] =    5, H_out[2] =    1, H_out[3] =    0, max_r =    7
-H_out[0] =    5, H_out[1] =    5, H_out[2] =    3, H_out[3] =    2, max_r =    8
-H_out[0] =    9, H_out[1] =    9, H_out[2] =    4, H_out[3] =    2, max_r =    7
-H_out[0] =    7, H_out[1] =    7, H_out[2] =    7, H_out[3] =    5, max_r =    8
-H_out[0] =    6, H_out[1] =    8, H_out[2] =   11, H_out[3] =    6, max_r =    9
-H_out[0] =    5, H_out[1] =    9, H_out[2] =    9, H_out[3] =    9, max_r =    8
-H_out[0] =    6, H_out[1] =    8, H_out[2] =    8, H_out[3] =    7, max_r =   11
-H_out[0] =    4, H_out[1] =    6, H_out[2] =    8, H_out[3] =    8, max_r =    9
-H_out[0] =    3, H_out[1] =    5, H_out[2] =    7, H_out[3] =    7, max_r =   11
-H_out[0] =    2, H_out[1] =    4, H_out[2] =    5, H_out[3] =   10, max_r =    9
-H_out[0] =    5, H_out[1] =    5, H_out[2] =    4, H_out[3] =    8, max_r =   11
-H_out[0] =    3, H_out[1] =    3, H_out[2] =    3, H_out[3] =    7, max_r =   10
-H_out[0] =    7, H_out[1] =    7, H_out[2] =    4, H_out[3] =    6, max_r =   11
-H_out[0] =    5, H_out[1] =    5, H_out[2] =    5, H_out[3] =    5, max_r =   10
-H_out[0] =    4, H_out[1] =    9, H_out[2] =    6, H_out[3] =    4, max_r =   11
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    7, H_out[3] =    7, max_r =   10
-H_out[0] =    6, H_out[1] =    6, H_out[2] =    8, H_out[3] =    6, max_r =   11
-H_out[0] =    8, H_out[1] =   10, H_out[2] =    6, H_out[3] =    6, max_r =   10
-H_out[0] =    6, H_out[1] =    8, H_out[2] =    8, H_out[3] =    7, max_r =   11
-H_out[0] =    5, H_out[1] =    7, H_out[2] =    9, H_out[3] =    8, max_r =   10
-H_out[0] =    6, H_out[1] =    8, H_out[2] =    7, H_out[3] =    7, max_r =   11
-H_out[0] =    4, H_out[1] =    6, H_out[2] =    6, H_out[3] =   11, max_r =   10
-H_out[0] =    7, H_out[1] =    8, H_out[2] =    7, H_out[3] =    9, max_r =   11
-H_out[0] =    5, H_out[1] =    6, H_out[2] =    6, H_out[3] =    8, max_r =   11
-H_out[0] =    4, H_out[1] =    6, H_out[2] =    7, H_out[3] =    9, max_r =   11
-H_out[0] =    3, H_out[1] =    7, H_out[2] =    5, H_out[3] =    7, max_r =   11
-H_out[0] =    6, H_out[1] =    6, H_out[2] =    5, H_out[3] =    9, max_r =   11
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    6, H_out[3] =    7, max_r =   11
-H_out[0] =    4, H_out[1] =    5, H_out[2] =    5, H_out[3] =    6, max_r =   11
-H_out[0] =    8, H_out[1] =    6, H_out[2] =    6, H_out[3] =    8, max_r =   11
-H_out[0] =    6, H_out[1] =    6, H_out[2] =    4, H_out[3] =    6, max_r =   11
-H_out[0] =    7, H_out[1] =   10, H_out[2] =    5, H_out[3] =    8, max_r =   11
-H_out[0] =    5, H_out[1] =    8, H_out[2] =    8, H_out[3] =    6, max_r =   11
-H_out[0] =    7, H_out[1] =    9, H_out[2] =    9, H_out[3] =    7, max_r =   11
-H_out[0] =    5, H_out[1] =    7, H_out[2] =    7, H_out[3] =    7, max_r =   11
-H_out[0] =    7, H_out[1] =    9, H_out[2] =    8, H_out[3] =   11, max_r =   11
-H_out[0] =    5, H_out[1] =    7, H_out[2] =    7, H_out[3] =    9, max_r =   11
-H_out[0] =    7, H_out[1] =    9, H_out[2] =    8, H_out[3] =    8, max_r =   11
-H_out[0] =    5, H_out[1] =    7, H_out[2] =    7, H_out[3] =    9, max_r =   11
-H_out[0] =    7, H_out[1] =    9, H_out[2] =    8, H_out[3] =    7, max_r =   11
-H_out[0] =    5, H_out[1] =    7, H_out[2] =    7, H_out[3] =    9, max_r =   11
-H_out[0] =    4, H_out[1] =    9, H_out[2] =    8, H_out[3] =    7, max_r =   11
-H_out[0] =    3, H_out[1] =    7, H_out[2] =    7, H_out[3] =    9, max_r =   11
-H_out[0] =    2, H_out[1] =    6, H_out[2] =    8, H_out[3] =    7, max_r =   11
-H_out[0] =    3, H_out[1] =    5, H_out[2] =    6, H_out[3] =    9, max_r =   11
-H_out[0] =    7, H_out[1] =    4, H_out[2] =    5, H_out[3] =    7, max_r =   11
-H_out[0] =    5, H_out[1] =    5, H_out[2] =    4, H_out[3] =    8, max_r =   11
-H_out[0] =    4, H_out[1] =    9, H_out[2] =    4, H_out[3] =    6, max_r =   11
-H_out[0] =    4, H_out[1] =    7, H_out[2] =    7, H_out[3] =    6, max_r =   11
-H_out[0] =    5, H_out[1] =    6, H_out[2] =   11, H_out[3] =    6, max_r =   11
-H_out[0] =    3, H_out[1] =    5, H_out[2] =    9, H_out[3] =    9, max_r =   11
-H_out[0] =    3, H_out[1] =    4, H_out[2] =    8, H_out[3] =   10, max_r =   11
-H_out[0] =    2, H_out[1] =    3, H_out[2] =    7, H_out[3] =    8, max_r =   11
-H_out[0] =    1, H_out[1] =    2, H_out[2] =    6, H_out[3] =    7, max_r =   11
-H_out[0] =    1, H_out[1] =    1, H_out[2] =    5, H_out[3] =    9, max_r =   11
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    4, H_out[3] =    7, max_r =   11
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    3, H_out[3] =    6, max_r =   11
-H_out[0] =    1, H_out[1] =    0, H_out[2] =    0, H_out[3] =    5, max_r =   11
-H_out[0] =    3, H_out[1] =    0, H_out[2] =    2, H_out[3] =    0, max_r =   11
-H_out[0] =    5, H_out[1] =    2, H_out[2] =    0, H_out[3] =    3, max_r =   11
-H_out[0] =    8, H_out[1] =    4, H_out[2] =    2, H_out[3] =    2, max_r =   11
-H_out[0] =    0, H_out[1] =    7, H_out[2] =    3, H_out[3] =    1, max_r =   11
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    6, H_out[3] =    2, max_r =   11
-H_out[0] =   10, H_out[1] =    5, H_out[2] =    0, H_out[3] =    5, max_r =   11
-H_out[0] =    8, H_out[1] =    8, H_out[2] =    4, H_out[3] =    0, max_r =   11
-H_out[0] =   12, H_out[1] =    9, H_out[2] =    7, H_out[3] =    3, max_r =   11
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   10, H_out[3] =    6, max_r =   11
-H_out[0] =    9, H_out[1] =   11, H_out[2] =   11, H_out[3] =    8, max_r =   12
-H_out[0] =    8, H_out[1] =   12, H_out[2] =   12, H_out[3] =    9, max_r =   11
-H_out[0] =    7, H_out[1] =   10, H_out[2] =   10, H_out[3] =   10, max_r =   12
-H_out[0] =    6, H_out[1] =    9, H_out[2] =   11, H_out[3] =   11, max_r =   12
-H_out[0] =    6, H_out[1] =    8, H_out[2] =   12, H_out[3] =    9, max_r =   12
-H_out[0] =    5, H_out[1] =    8, H_out[2] =   10, H_out[3] =   10, max_r =   12
-H_out[0] =    8, H_out[1] =    8, H_out[2] =   10, H_out[3] =    8, max_r =   12
-H_out[0] =    6, H_out[1] =    6, H_out[2] =    8, H_out[3] =    9, max_r =   12
-H_out[0] =   10, H_out[1] =    7, H_out[2] =    7, H_out[3] =   12, max_r =   12
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    8, H_out[3] =   10, max_r =   12
-H_out[0] =   13, H_out[1] =    9, H_out[2] =    9, H_out[3] =    9, max_r =   12
-H_out[0] =   11, H_out[1] =   11, H_out[2] =    7, H_out[3] =    8, max_r =   12
-H_out[0] =   10, H_out[1] =   12, H_out[2] =   10, H_out[3] =    8, max_r =   13
-H_out[0] =   11, H_out[1] =   10, H_out[2] =   10, H_out[3] =    9, max_r =   12
-H_out[0] =    9, H_out[1] =    9, H_out[2] =   14, H_out[3] =   12, max_r =   13
-H_out[0] =    8, H_out[1] =   10, H_out[2] =   12, H_out[3] =   12, max_r =   12
-H_out[0] =    9, H_out[1] =   11, H_out[2] =   11, H_out[3] =   13, max_r =   14
-H_out[0] =    7, H_out[1] =    9, H_out[2] =   10, H_out[3] =   11, max_r =   12
-H_out[0] =   10, H_out[1] =    8, H_out[2] =   13, H_out[3] =   13, max_r =   14
-H_out[0] =    8, H_out[1] =    8, H_out[2] =   11, H_out[3] =   11, max_r =   12
-H_out[0] =    7, H_out[1] =    9, H_out[2] =   10, H_out[3] =   15, max_r =   14
-H_out[0] =    8, H_out[1] =    7, H_out[2] =   10, H_out[3] =   13, max_r =   12
-H_out[0] =    9, H_out[1] =    6, H_out[2] =    8, H_out[3] =   12, max_r =   15
-H_out[0] =    9, H_out[1] =    7, H_out[2] =    7, H_out[3] =   12, max_r =   13
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    8, H_out[3] =   10, max_r =   15
-H_out[0] =   11, H_out[1] =    8, H_out[2] =    7, H_out[3] =    9, max_r =   13
-H_out[0] =    9, H_out[1] =    9, H_out[2] =   10, H_out[3] =    8, max_r =   15
-H_out[0] =   11, H_out[1] =   10, H_out[2] =    8, H_out[3] =    8, max_r =   13
-H_out[0] =    9, H_out[1] =    9, H_out[2] =    8, H_out[3] =   12, max_r =   15
-H_out[0] =   11, H_out[1] =   10, H_out[2] =   12, H_out[3] =   10, max_r =   13
-H_out[0] =    9, H_out[1] =    9, H_out[2] =   11, H_out[3] =   10, max_r =   15
-H_out[0] =   11, H_out[1] =   10, H_out[2] =    9, H_out[3] =   11, max_r =   13
-H_out[0] =    9, H_out[1] =    9, H_out[2] =    8, H_out[3] =   10, max_r =   15
-H_out[0] =   11, H_out[1] =   10, H_out[2] =   12, H_out[3] =   11, max_r =   13
-H_out[0] =    9, H_out[1] =    9, H_out[2] =   10, H_out[3] =   10, max_r =   15
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   12, H_out[3] =   11, max_r =   13
-H_out[0] =    8, H_out[1] =    8, H_out[2] =   10, H_out[3] =   10, max_r =   15
-H_out[0] =    8, H_out[1] =    9, H_out[2] =   12, H_out[3] =   14, max_r =   13
-H_out[0] =    8, H_out[1] =    7, H_out[2] =   10, H_out[3] =   12, max_r =   15
-H_out[0] =    8, H_out[1] =    7, H_out[2] =   11, H_out[3] =   14, max_r =   14
-H_out[0] =    9, H_out[1] =   10, H_out[2] =    9, H_out[3] =   12, max_r =   15
-H_out[0] =    7, H_out[1] =    8, H_out[2] =    9, H_out[3] =   13, max_r =   14
-H_out[0] =    7, H_out[1] =    8, H_out[2] =    9, H_out[3] =   11, max_r =   15
-H_out[0] =   11, H_out[1] =    6, H_out[2] =   10, H_out[3] =   11, max_r =   14
-H_out[0] =    9, H_out[1] =    9, H_out[2] =    8, H_out[3] =    9, max_r =   15
-H_out[0] =    8, H_out[1] =   13, H_out[2] =    8, H_out[3] =   12, max_r =   14
-H_out[0] =    0, H_out[1] =   11, H_out[2] =   11, H_out[3] =   10, max_r =   15
-H_out[0] =    6, H_out[1] =    0, H_out[2] =   12, H_out[3] =   10, max_r =   14
-H_out[0] =    5, H_out[1] =    9, H_out[2] =    0, H_out[3] =   10, max_r =   15
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    9, H_out[3] =    0, max_r =   14
-H_out[0] =    3, H_out[1] =    0, H_out[2] =    8, H_out[3] =    7, max_r =   15
-H_out[0] =    5, H_out[1] =    6, H_out[2] =    0, H_out[3] =    8, max_r =   14
-H_out[0] =    8, H_out[1] =    5, H_out[2] =    6, H_out[3] =    0, max_r =   15
-H_out[0] =    8, H_out[1] =    6, H_out[2] =    5, H_out[3] =    5, max_r =   14
-H_out[0] =    9, H_out[1] =    7, H_out[2] =    5, H_out[3] =    5, max_r =   15
-H_out[0] =    9, H_out[1] =   10, H_out[2] =    6, H_out[3] =    7, max_r =   14
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    8, H_out[3] =    5, max_r =   15
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    9, H_out[3] =    7, max_r =   14
-H_out[0] =    0, H_out[1] =    9, H_out[2] =    7, H_out[3] =    7, max_r =   15
-H_out[0] =    7, H_out[1] =    0, H_out[2] =    7, H_out[3] =    8, max_r =   14
-H_out[0] =   10, H_out[1] =    6, H_out[2] =    0, H_out[3] =    6, max_r =   15
-H_out[0] =   11, H_out[1] =    9, H_out[2] =    5, H_out[3] =    0, max_r =   14
-H_out[0] =    9, H_out[1] =    9, H_out[2] =    8, H_out[3] =    4, max_r =   15
-H_out[0] =    8, H_out[1] =   10, H_out[2] =    8, H_out[3] =    7, max_r =   14
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    8, H_out[3] =    7, max_r =   15
-H_out[0] =    8, H_out[1] =    8, H_out[2] =    9, H_out[3] =    7, max_r =   14
-H_out[0] =   10, H_out[1] =    9, H_out[2] =    7, H_out[3] =    7, max_r =   15
-H_out[0] =   11, H_out[1] =    9, H_out[2] =    7, H_out[3] =   11, max_r =   14
-H_out[0] =   14, H_out[1] =   10, H_out[2] =    8, H_out[3] =    9, max_r =   15
-H_out[0] =   15, H_out[1] =   12, H_out[2] =   11, H_out[3] =    8, max_r =   14
-H_out[0] =   13, H_out[1] =   13, H_out[2] =   11, H_out[3] =    9, max_r =   15
-H_out[0] =   12, H_out[1] =   14, H_out[2] =   12, H_out[3] =   10, max_r =   15
-H_out[0] =   13, H_out[1] =   12, H_out[2] =   12, H_out[3] =   11, max_r =   15
-H_out[0] =   14, H_out[1] =   12, H_out[2] =   13, H_out[3] =   11, max_r =   15
-H_out[0] =   12, H_out[1] =   12, H_out[2] =   11, H_out[3] =   11, max_r =   15
-H_out[0] =   11, H_out[1] =   13, H_out[2] =   11, H_out[3] =   12, max_r =   15
-H_out[0] =   11, H_out[1] =   11, H_out[2] =   11, H_out[3] =   10, max_r =   15
-H_out[0] =    9, H_out[1] =   10, H_out[2] =   12, H_out[3] =   10, max_r =   15
-H_out[0] =    8, H_out[1] =   10, H_out[2] =   10, H_out[3] =   10, max_r =   15
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    9, H_out[3] =   14, max_r =   15
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    9, H_out[3] =   12, max_r =   15
-H_out[0] =   11, H_out[1] =    9, H_out[2] =    7, H_out[3] =   11, max_r =   15
-H_out[0] =    9, H_out[1] =    9, H_out[2] =    8, H_out[3] =   10, max_r =   15
-H_out[0] =    9, H_out[1] =   10, H_out[2] =    8, H_out[3] =    9, max_r =   15
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    8, H_out[3] =   10, max_r =   15
-H_out[0] =    9, H_out[1] =   11, H_out[2] =    9, H_out[3] =    8, max_r =   15
-H_out[0] =   10, H_out[1] =    9, H_out[2] =    9, H_out[3] =    7, max_r =   15
-H_out[0] =    9, H_out[1] =    8, H_out[2] =   10, H_out[3] =    8, max_r =   15
-H_out[0] =   10, H_out[1] =    9, H_out[2] =    8, H_out[3] =    8, max_r =   15
-H_out[0] =   12, H_out[1] =    8, H_out[2] =    7, H_out[3] =    9, max_r =   15
-H_out[0] =   13, H_out[1] =   11, H_out[2] =    8, H_out[3] =    7, max_r =   15
-H_out[0] =   12, H_out[1] =   11, H_out[2] =   10, H_out[3] =    6, max_r =   15
-H_out[0] =   13, H_out[1] =   12, H_out[2] =   10, H_out[3] =    9, max_r =   15
-H_out[0] =   11, H_out[1] =   11, H_out[2] =   10, H_out[3] =    9, max_r =   15
-H_out[0] =   12, H_out[1] =   12, H_out[2] =   14, H_out[3] =   12, max_r =   15
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   12, H_out[3] =   12, max_r =   15
-H_out[0] =   10, H_out[1] =   11, H_out[2] =   11, H_out[3] =   13, max_r =   15
-H_out[0] =   10, H_out[1] =    9, H_out[2] =   10, H_out[3] =   11, max_r =   15
-H_out[0] =   11, H_out[1] =    9, H_out[2] =   10, H_out[3] =   10, max_r =   15
-H_out[0] =    9, H_out[1] =    9, H_out[2] =    8, H_out[3] =    9, max_r =   15
-H_out[0] =    9, H_out[1] =   10, H_out[2] =    8, H_out[3] =    9, max_r =   15
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    8, H_out[3] =    7, max_r =   15
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    9, H_out[3] =    7, max_r =   15
-H_out[0] =    9, H_out[1] =    6, H_out[2] =    0, H_out[3] =    7, max_r =   15
-H_out[0] =    0, H_out[1] =    7, H_out[2] =    6, H_out[3] =    0, max_r =   15
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    6, H_out[3] =    4, max_r =   15
-H_out[0] =    5, H_out[1] =    4, H_out[2] =    0, H_out[3] =    5, max_r =   15
-H_out[0] =    5, H_out[1] =    5, H_out[2] =    3, H_out[3] =    0, max_r =   15
-H_out[0] =    9, H_out[1] =    4, H_out[2] =    3, H_out[3] =    2, max_r =   15
-H_out[0] =    7, H_out[1] =    7, H_out[2] =    4, H_out[3] =    2, max_r =   15
-H_out[0] =    0, H_out[1] =   11, H_out[2] =    6, H_out[3] =    2, max_r =   15
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    9, H_out[3] =    5, max_r =   15
-H_out[0] =    6, H_out[1] =    8, H_out[2] =    0, H_out[3] =    8, max_r =   15
-H_out[0] =    6, H_out[1] =    7, H_out[2] =    6, H_out[3] =    0, max_r =   15
-H_out[0] =    9, H_out[1] =    8, H_out[2] =   10, H_out[3] =    5, max_r =   15
-H_out[0] =    7, H_out[1] =    7, H_out[2] =    9, H_out[3] =    8, max_r =   15
-H_out[0] =    9, H_out[1] =   11, H_out[2] =    7, H_out[3] =    9, max_r =   15
-H_out[0] =   10, H_out[1] =    9, H_out[2] =    9, H_out[3] =    8, max_r =   15
-H_out[0] =   11, H_out[1] =   11, H_out[2] =   10, H_out[3] =    9, max_r =   15
-H_out[0] =    9, H_out[1] =    9, H_out[2] =   11, H_out[3] =    8, max_r =   15
-H_out[0] =    9, H_out[1] =   13, H_out[2] =   10, H_out[3] =    9, max_r =   15
-H_out[0] =   10, H_out[1] =   11, H_out[2] =   11, H_out[3] =   10, max_r =   15
-H_out[0] =    0, H_out[1] =   11, H_out[2] =   15, H_out[3] =   10, max_r =   15
-H_out[0] =   13, H_out[1] =    0, H_out[2] =   13, H_out[3] =   13, max_r =   15
-H_out[0] =   11, H_out[1] =   11, H_out[2] =    0, H_out[3] =   14, max_r =   15
-H_out[0] =   11, H_out[1] =   12, H_out[2] =   11, H_out[3] =    0, max_r =   15
-H_out[0] =    9, H_out[1] =   10, H_out[2] =   10, H_out[3] =   11, max_r =   15
-H_out[0] =    9, H_out[1] =   10, H_out[2] =   14, H_out[3] =   10, max_r =   15
-H_out[0] =   12, H_out[1] =    8, H_out[2] =   12, H_out[3] =   12, max_r =   15
-H_out[0] =   13, H_out[1] =   11, H_out[2] =   12, H_out[3] =   13, max_r =   15
-H_out[0] =   11, H_out[1] =   11, H_out[2] =   10, H_out[3] =   11, max_r =   15
-H_out[0] =   10, H_out[1] =   12, H_out[2] =   13, H_out[3] =   11, max_r =   15
-H_out[0] =    9, H_out[1] =   10, H_out[2] =   13, H_out[3] =   12, max_r =   15
-H_out[0] =    8, H_out[1] =    9, H_out[2] =   14, H_out[3] =   12, max_r =   15
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    7, H_out[3] =   12, max_r =   15
-H_out[0] =    7, H_out[1] =    7, H_out[2] =   11, H_out[3] =   13, max_r =   15
-H_out[0] =    7, H_out[1] =    8, H_out[2] =    9, H_out[3] =   11, max_r =   15
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    8, H_out[3] =   10, max_r =   15
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    7, H_out[3] =    9, max_r =   15
-H_out[0] =    8, H_out[1] =    6, H_out[2] =    6, H_out[3] =    8, max_r =   15
-H_out[0] =    6, H_out[1] =    6, H_out[2] =    5, H_out[3] =    4, max_r =   15
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    5, H_out[3] =    8, max_r =   15
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    5, H_out[3] =    6, max_r =   15
-H_out[0] =   10, H_out[1] =    7, H_out[2] =    6, H_out[3] =    5, max_r =   15
-H_out[0] =   11, H_out[1] =    9, H_out[2] =    6, H_out[3] =    5, max_r =   15
-H_out[0] =   11, H_out[1] =   10, H_out[2] =    8, H_out[3] =    5, max_r =   15
-H_out[0] =   12, H_out[1] =   10, H_out[2] =    9, H_out[3] =    7, max_r =   15
-H_out[0] =   10, H_out[1] =   10, H_out[2] =    9, H_out[3] =    8, max_r =   15
-H_out[0] =   12, H_out[1] =   11, H_out[2] =    9, H_out[3] =    8, max_r =   15
-H_out[0] =   10, H_out[1] =   12, H_out[2] =    9, H_out[3] =    8, max_r =   15
-H_out[0] =    9, H_out[1] =   11, H_out[2] =   10, H_out[3] =    8, max_r =   15
-H_out[0] =    8, H_out[1] =    9, H_out[2] =   11, H_out[3] =    9, max_r =   15
-H_out[0] =    7, H_out[1] =    8, H_out[2] =   10, H_out[3] =    9, max_r =   15
-H_out[0] =    0, H_out[1] =    7, H_out[2] =    8, H_out[3] =   10, max_r =   15
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    7, H_out[3] =    9, max_r =   15
-H_out[0] =    4, H_out[1] =    5, H_out[2] =    0, H_out[3] =    7, max_r =   15
-H_out[0] =    0, H_out[1] =    4, H_out[2] =    5, H_out[3] =    0, max_r =   15
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    4, H_out[3] =    5, max_r =   15
-H_out[0] =    1, H_out[1] =    2, H_out[2] =    0, H_out[3] =    4, max_r =   15
-H_out[0] =    1, H_out[1] =    1, H_out[2] =    2, H_out[3] =    0, max_r =   15
-H_out[0] =    4, H_out[1] =    0, H_out[2] =    4, H_out[3] =    2, max_r =   15
-H_out[0] =    7, H_out[1] =    3, H_out[2] =    2, H_out[3] =    2, max_r =   15
-H_out[0] =    0, H_out[1] =    6, H_out[2] =    2, H_out[3] =    3, max_r =   15
-H_out[0] =    4, H_out[1] =    0, H_out[2] =    5, H_out[3] =    1, max_r =   15
-H_out[0] =    7, H_out[1] =    3, H_out[2] =    0, H_out[3] =    4, max_r =   15
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    2, H_out[3] =    0, max_r =   15
-H_out[0] =    8, H_out[1] =    6, H_out[2] =    5, H_out[3] =    2, max_r =   15
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    5, H_out[3] =    4, max_r =   15
-H_out[0] =   11, H_out[1] =    7, H_out[2] =    5, H_out[3] =    4, max_r =   15
-H_out[0] =   10, H_out[1] =    9, H_out[2] =    5, H_out[3] =    4, max_r =   15
-H_out[0] =    8, H_out[1] =   13, H_out[2] =    8, H_out[3] =    4, max_r =   15
-H_out[0] =    0, H_out[1] =   11, H_out[2] =   11, H_out[3] =    7, max_r =   15
-H_out[0] =    9, H_out[1] =    0, H_out[2] =   12, H_out[3] =   10, max_r =   15
-H_out[0] =   13, H_out[1] =    9, H_out[2] =    0, H_out[3] =   10, max_r =   15
-H_out[0] =   11, H_out[1] =   11, H_out[2] =    9, H_out[3] =    0, max_r =   15
-H_out[0] =   14, H_out[1] =   12, H_out[2] =   10, H_out[3] =    7, max_r =   15
-H_out[0] =   15, H_out[1] =   13, H_out[2] =   10, H_out[3] =    9, max_r =   15
-H_out[0] =   13, H_out[1] =   16, H_out[2] =   11, H_out[3] =    9, max_r =   15
-H_out[0] =   12, H_out[1] =   17, H_out[2] =   14, H_out[3] =   10, max_r =   15
-H_out[0] =   14, H_out[1] =   15, H_out[2] =   15, H_out[3] =   13, max_r =   16
-H_out[0] =   12, H_out[1] =   14, H_out[2] =   19, H_out[3] =   14, max_r =   17
-H_out[0] =   14, H_out[1] =   13, H_out[2] =   17, H_out[3] =   17, max_r =   16
-H_out[0] =   12, H_out[1] =   14, H_out[2] =   16, H_out[3] =   18, max_r =   19
-H_out[0] =   13, H_out[1] =   13, H_out[2] =   15, H_out[3] =   16, max_r =   17
-H_out[0] =   12, H_out[1] =   14, H_out[2] =   14, H_out[3] =   15, max_r =   19
-H_out[0] =   11, H_out[1] =   15, H_out[2] =   15, H_out[3] =   14, max_r =   17
-H_out[0] =    0, H_out[1] =   14, H_out[2] =   13, H_out[3] =   16, max_r =   19
-H_out[0] =    6, H_out[1] =    0, H_out[2] =   14, H_out[3] =   17, max_r =   17
-H_out[0] =    7, H_out[1] =    5, H_out[2] =    0, H_out[3] =   15, max_r =   19
-H_out[0] =    5, H_out[1] =    5, H_out[2] =   11, H_out[3] =    0, max_r =   17
-H_out[0] =    4, H_out[1] =    6, H_out[2] =   10, H_out[3] =   13, max_r =   19
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    9, H_out[3] =   12, max_r =   17
-H_out[0] =    6, H_out[1] =    3, H_out[2] =    8, H_out[3] =   11, max_r =   19
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    7, H_out[3] =   10, max_r =   17
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    6, H_out[3] =   10, max_r =   19
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    8, H_out[3] =    8, max_r =   17
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    6, H_out[3] =    8, max_r =   19
-H_out[0] =    8, H_out[1] =    9, H_out[2] =    8, H_out[3] =   10, max_r =   17
-H_out[0] =    8, H_out[1] =    9, H_out[2] =    8, H_out[3] =    8, max_r =   19
-H_out[0] =    8, H_out[1] =    7, H_out[2] =   11, H_out[3] =    7, max_r =   17
-H_out[0] =    9, H_out[1] =    7, H_out[2] =    6, H_out[3] =   10, max_r =   19
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    9, H_out[3] =   10, max_r =   17
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    7, H_out[3] =    8, max_r =   19
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   17
-H_out[0] =    4, H_out[1] =    5, H_out[2] =    0, H_out[3] =    9, max_r =   19
-H_out[0] =    0, H_out[1] =    4, H_out[2] =    4, H_out[3] =    0, max_r =   17
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    4, H_out[3] =    6, max_r =   19
-H_out[0] =    1, H_out[1] =    2, H_out[2] =    0, H_out[3] =    2, max_r =   17
-H_out[0] =    1, H_out[1] =    4, H_out[2] =    1, H_out[3] =    0, max_r =   19
-H_out[0] =    2, H_out[1] =    2, H_out[2] =    2, H_out[3] =    0, max_r =   17
-H_out[0] =    3, H_out[1] =    1, H_out[2] =    3, H_out[3] =    1, max_r =   19
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    1, H_out[3] =    1, max_r =   17
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    1, H_out[3] =    2, max_r =   19
-H_out[0] =    3, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =   17
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    0, H_out[3] =    0, max_r =   19
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    1, H_out[3] =    0, max_r =   17
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    1, H_out[3] =    0, max_r =   19
-H_out[0] =    6, H_out[1] =    2, H_out[2] =    1, H_out[3] =    0, max_r =   17
-H_out[0] =    9, H_out[1] =    5, H_out[2] =    1, H_out[3] =    0, max_r =   19
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    4, H_out[3] =    0, max_r =   17
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    7, H_out[3] =    3, max_r =   19
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    7, H_out[3] =    6, max_r =   17
-H_out[0] =    8, H_out[1] =    5, H_out[2] =    0, H_out[3] =    6, max_r =   19
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    4, H_out[3] =    0, max_r =   17
-H_out[0] =    9, H_out[1] =    7, H_out[2] =    6, H_out[3] =    3, max_r =   19
-H_out[0] =   12, H_out[1] =    8, H_out[2] =    6, H_out[3] =    5, max_r =   17
-H_out[0] =   13, H_out[1] =   11, H_out[2] =    9, H_out[3] =    5, max_r =   19
-H_out[0] =   16, H_out[1] =   12, H_out[2] =   10, H_out[3] =    7, max_r =   17
-H_out[0] =   16, H_out[1] =   15, H_out[2] =   11, H_out[3] =    9, max_r =   19
-H_out[0] =   17, H_out[1] =   15, H_out[2] =   14, H_out[3] =   10, max_r =   17
-H_out[0] =   15, H_out[1] =   15, H_out[2] =   14, H_out[3] =   13, max_r =   19
-H_out[0] =   14, H_out[1] =   16, H_out[2] =   14, H_out[3] =   13, max_r =   17
-H_out[0] =    0, H_out[1] =   17, H_out[2] =   14, H_out[3] =   13, max_r =   19
-H_out[0] =   12, H_out[1] =    0, H_out[2] =   15, H_out[3] =   16, max_r =   17
-H_out[0] =   12, H_out[1] =   14, H_out[2] =    0, H_out[3] =   14, max_r =   19
-H_out[0] =   11, H_out[1] =   13, H_out[2] =   12, H_out[3] =    0, max_r =   17
-H_out[0] =   10, H_out[1] =   12, H_out[2] =   13, H_out[3] =   12, max_r =   19
-H_out[0] =   12, H_out[1] =   13, H_out[2] =   12, H_out[3] =   11, max_r =   17
-H_out[0] =   10, H_out[1] =   11, H_out[2] =   11, H_out[3] =   12, max_r =   19
-H_out[0] =   10, H_out[1] =   14, H_out[2] =   12, H_out[3] =   11, max_r =   17
-H_out[0] =   10, H_out[1] =   12, H_out[2] =   12, H_out[3] =   10, max_r =   19
-H_out[0] =   12, H_out[1] =   11, H_out[2] =   13, H_out[3] =   11, max_r =   17
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   11, H_out[3] =   11, max_r =   19
-H_out[0] =    9, H_out[1] =   14, H_out[2] =   10, H_out[3] =   12, max_r =   17
-H_out[0] =    9, H_out[1] =   12, H_out[2] =   12, H_out[3] =   10, max_r =   19
-H_out[0] =   12, H_out[1] =   11, H_out[2] =   13, H_out[3] =   11, max_r =   17
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   14, H_out[3] =   11, max_r =   19
-H_out[0] =   10, H_out[1] =   14, H_out[2] =   13, H_out[3] =   12, max_r =   17
-H_out[0] =    0, H_out[1] =   12, H_out[2] =   12, H_out[3] =   13, max_r =   19
-H_out[0] =    7, H_out[1] =    0, H_out[2] =   13, H_out[3] =   12, max_r =   17
-H_out[0] =    0, H_out[1] =   10, H_out[2] =    0, H_out[3] =   11, max_r =   19
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   10, H_out[3] =    0, max_r =   17
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    8, max_r =   19
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =   17
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    7, H_out[3] =    0, max_r =   19
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   17
-H_out[0] =    4, H_out[1] =    2, H_out[2] =    5, H_out[3] =    9, max_r =   19
-H_out[0] =    0, H_out[1] =    2, H_out[2] =    4, H_out[3] =    8, max_r =   17
-H_out[0] =    1, H_out[1] =    0, H_out[2] =    3, H_out[3] =    6, max_r =   19
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =    5, max_r =   17
-H_out[0] =    2, H_out[1] =    3, H_out[2] =    1, H_out[3] =    0, max_r =   19
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    2, H_out[3] =    3, max_r =   17
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    2, H_out[3] =    2, max_r =   19
-H_out[0] =    2, H_out[1] =    1, H_out[2] =    3, H_out[3] =    4, max_r =   17
-H_out[0] =    5, H_out[1] =    2, H_out[2] =    3, H_out[3] =    4, max_r =   19
-H_out[0] =    5, H_out[1] =    4, H_out[2] =    3, H_out[3] =    5, max_r =   17
-H_out[0] =    0, H_out[1] =    7, H_out[2] =    3, H_out[3] =    3, max_r =   19
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   17
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    0, H_out[3] =    4, max_r =   19
-H_out[0] =    4, H_out[1] =    4, H_out[2] =    3, H_out[3] =    0, max_r =   17
-H_out[0] =    6, H_out[1] =    3, H_out[2] =    3, H_out[3] =    1, max_r =   19
-H_out[0] =    9, H_out[1] =    6, H_out[2] =    3, H_out[3] =    5, max_r =   17
-H_out[0] =    9, H_out[1] =    7, H_out[2] =    4, H_out[3] =    5, max_r =   19
-H_out[0] =   12, H_out[1] =    8, H_out[2] =    6, H_out[3] =    5, max_r =   17
-H_out[0] =   12, H_out[1] =   11, H_out[2] =    7, H_out[3] =    5, max_r =   19
-H_out[0] =   12, H_out[1] =   11, H_out[2] =   10, H_out[3] =    8, max_r =   17
-H_out[0] =   14, H_out[1] =   14, H_out[2] =   10, H_out[3] =    9, max_r =   19
-H_out[0] =   15, H_out[1] =   13, H_out[2] =   12, H_out[3] =    9, max_r =   17
-H_out[0] =    0, H_out[1] =   13, H_out[2] =   13, H_out[3] =   11, max_r =   19
-H_out[0] =   12, H_out[1] =    0, H_out[2] =   12, H_out[3] =   11, max_r =   17
-H_out[0] =   11, H_out[1] =   10, H_out[2] =    0, H_out[3] =   12, max_r =   19
-H_out[0] =   10, H_out[1] =   14, H_out[2] =    9, H_out[3] =    0, max_r =   17
-H_out[0] =   11, H_out[1] =   12, H_out[2] =   12, H_out[3] =    9, max_r =   19
-H_out[0] =   10, H_out[1] =   12, H_out[2] =   13, H_out[3] =   11, max_r =   17
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   11, H_out[3] =   11, max_r =   19
-H_out[0] =   10, H_out[1] =   12, H_out[2] =   11, H_out[3] =   12, max_r =   17
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   10, H_out[3] =   10, max_r =   19
-H_out[0] =   11, H_out[1] =   12, H_out[2] =   11, H_out[3] =   10, max_r =   17
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   10, H_out[3] =    9, max_r =   19
-H_out[0] =   10, H_out[1] =   13, H_out[2] =   11, H_out[3] =   10, max_r =   17
-H_out[0] =   11, H_out[1] =   11, H_out[2] =   11, H_out[3] =    9, max_r =   19
-H_out[0] =   11, H_out[1] =   12, H_out[2] =   12, H_out[3] =   10, max_r =   17
-H_out[0] =   12, H_out[1] =   10, H_out[2] =   13, H_out[3] =   10, max_r =   19
-H_out[0] =    0, H_out[1] =   13, H_out[2] =   11, H_out[3] =   11, max_r =   17
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   11, H_out[3] =   12, max_r =   19
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    0, H_out[3] =   10, max_r =   17
-H_out[0] =    7, H_out[1] =    9, H_out[2] =    0, H_out[3] =    0, max_r =   19
-H_out[0] =    8, H_out[1] =    8, H_out[2] =    7, H_out[3] =    0, max_r =   17
-H_out[0] =    7, H_out[1] =    7, H_out[2] =    8, H_out[3] =    7, max_r =   19
-H_out[0] =    5, H_out[1] =   10, H_out[2] =    7, H_out[3] =    6, max_r =   17
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    8, H_out[3] =   10, max_r =   19
-H_out[0] =    3, H_out[1] =    0, H_out[2] =    9, H_out[3] =    8, max_r =   17
-H_out[0] =    5, H_out[1] =    6, H_out[2] =    0, H_out[3] =    7, max_r =   19
-H_out[0] =    3, H_out[1] =    5, H_out[2] =    6, H_out[3] =    0, max_r =   17
-H_out[0] =    3, H_out[1] =    4, H_out[2] =    5, H_out[3] =    5, max_r =   19
-H_out[0] =    3, H_out[1] =    3, H_out[2] =    4, H_out[3] =    5, max_r =   17
-H_out[0] =    7, H_out[1] =    2, H_out[2] =    3, H_out[3] =    4, max_r =   19
-H_out[0] =    5, H_out[1] =    5, H_out[2] =    2, H_out[3] =    3, max_r =   17
-H_out[0] =    4, H_out[1] =    6, H_out[2] =    4, H_out[3] =    2, max_r =   19
-H_out[0] =    0, H_out[1] =    4, H_out[2] =    4, H_out[3] =    3, max_r =   17
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    5, H_out[3] =    3, max_r =   19
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    0, H_out[3] =    3, max_r =   17
-H_out[0] =    4, H_out[1] =    2, H_out[2] =    2, H_out[3] =    0, max_r =   19
-H_out[0] =    4, H_out[1] =    2, H_out[2] =    4, H_out[3] =    0, max_r =   17
-H_out[0] =    0, H_out[1] =    3, H_out[2] =    2, H_out[3] =    2, max_r =   19
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    1, H_out[3] =    3, max_r =   17
-H_out[0] =    8, H_out[1] =    5, H_out[2] =    0, H_out[3] =    1, max_r =   19
-H_out[0] =   11, H_out[1] =    7, H_out[2] =    4, H_out[3] =    0, max_r =   17
-H_out[0] =   10, H_out[1] =   10, H_out[2] =    6, H_out[3] =    3, max_r =   19
-H_out[0] =   13, H_out[1] =   10, H_out[2] =    9, H_out[3] =    5, max_r =   17
-H_out[0] =   11, H_out[1] =   12, H_out[2] =    9, H_out[3] =    7, max_r =   19
-H_out[0] =    0, H_out[1] =   12, H_out[2] =   12, H_out[3] =    8, max_r =   17
-H_out[0] =    9, H_out[1] =    0, H_out[2] =   14, H_out[3] =   10, max_r =   19
-H_out[0] =   11, H_out[1] =    9, H_out[2] =    0, H_out[3] =   14, max_r =   17
-H_out[0] =   10, H_out[1] =   11, H_out[2] =   11, H_out[3] =    0, max_r =   19
-H_out[0] =   10, H_out[1] =   10, H_out[2] =   11, H_out[3] =   11, max_r =   17
-H_out[0] =   11, H_out[1] =    9, H_out[2] =   10, H_out[3] =   10, max_r =   19
-H_out[0] =   12, H_out[1] =    9, H_out[2] =   12, H_out[3] =   10, max_r =   17
-H_out[0] =   10, H_out[1] =   13, H_out[2] =   10, H_out[3] =   12, max_r =   19
-H_out[0] =   11, H_out[1] =   11, H_out[2] =   11, H_out[3] =   11, max_r =   17
-H_out[0] =    9, H_out[1] =   12, H_out[2] =   15, H_out[3] =   12, max_r =   19
-H_out[0] =    9, H_out[1] =   10, H_out[2] =   13, H_out[3] =   13, max_r =   17
-H_out[0] =   12, H_out[1] =    9, H_out[2] =    8, H_out[3] =   17, max_r =   19
-H_out[0] =   10, H_out[1] =   11, H_out[2] =    9, H_out[3] =   15, max_r =   17
-H_out[0] =   13, H_out[1] =   11, H_out[2] =   11, H_out[3] =   14, max_r =   19
-H_out[0] =   11, H_out[1] =   12, H_out[2] =   10, H_out[3] =   13, max_r =   17
-H_out[0] =    0, H_out[1] =   12, H_out[2] =   13, H_out[3] =   13, max_r =   19
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   11, H_out[3] =   11, max_r =   17
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    0, H_out[3] =   15, max_r =   19
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    0, H_out[3] =    0, max_r =   17
-H_out[0] =    8, H_out[1] =   10, H_out[2] =    8, H_out[3] =    0, max_r =   19
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    8, H_out[3] =    6, max_r =   17
-H_out[0] =    7, H_out[1] =    7, H_out[2] =    9, H_out[3] =    7, max_r =   19
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    7, H_out[3] =    7, max_r =   17
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    9, H_out[3] =   11, max_r =   19
-H_out[0] =    4, H_out[1] =    5, H_out[2] =    0, H_out[3] =    9, max_r =   17
-H_out[0] =    7, H_out[1] =    4, H_out[2] =    6, H_out[3] =    0, max_r =   19
-H_out[0] =    5, H_out[1] =    6, H_out[2] =    5, H_out[3] =    7, max_r =   17
-H_out[0] =    5, H_out[1] =    6, H_out[2] =    6, H_out[3] =    6, max_r =   19
-H_out[0] =    3, H_out[1] =    7, H_out[2] =    8, H_out[3] =    5, max_r =   17
-H_out[0] =    5, H_out[1] =    5, H_out[2] =    6, H_out[3] =    8, max_r =   19
-H_out[0] =    3, H_out[1] =    5, H_out[2] =    9, H_out[3] =    7, max_r =   17
-H_out[0] =    0, H_out[1] =    4, H_out[2] =    7, H_out[3] =    7, max_r =   19
-H_out[0] =    1, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   17
-H_out[0] =    0, H_out[1] =    1, H_out[2] =    0, H_out[3] =    9, max_r =   19
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =   17
-H_out[0] =    5, H_out[1] =    1, H_out[2] =    0, H_out[3] =    6, max_r =   19
-H_out[0] =    6, H_out[1] =    4, H_out[2] =    2, H_out[3] =    0, max_r =   17
-H_out[0] =    6, H_out[1] =    5, H_out[2] =    2, H_out[3] =    4, max_r =   19
-H_out[0] =    9, H_out[1] =    5, H_out[2] =    6, H_out[3] =    4, max_r =   17
-H_out[0] =   12, H_out[1] =    8, H_out[2] =    7, H_out[3] =    4, max_r =   19
-H_out[0] =    0, H_out[1] =   11, H_out[2] =    7, H_out[3] =    8, max_r =   17
-H_out[0] =    9, H_out[1] =    0, H_out[2] =   10, H_out[3] =    6, max_r =   19
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    0, H_out[3] =    9, max_r =   17
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    7, H_out[3] =    0, max_r =   19
-H_out[0] =   10, H_out[1] =    9, H_out[2] =   10, H_out[3] =    6, max_r =   17
-H_out[0] =   11, H_out[1] =    9, H_out[2] =    8, H_out[3] =    9, max_r =   19
-H_out[0] =   10, H_out[1] =    9, H_out[2] =   11, H_out[3] =    9, max_r =   17
-H_out[0] =   12, H_out[1] =   10, H_out[2] =    9, H_out[3] =    9, max_r =   19
-H_out[0] =   15, H_out[1] =   11, H_out[2] =   11, H_out[3] =   10, max_r =   17
-H_out[0] =   16, H_out[1] =   14, H_out[2] =   10, H_out[3] =   11, max_r =   19
-H_out[0] =   14, H_out[1] =   14, H_out[2] =   13, H_out[3] =   13, max_r =   17
-H_out[0] =   13, H_out[1] =   15, H_out[2] =   13, H_out[3] =   12, max_r =   19
-H_out[0] =   12, H_out[1] =   13, H_out[2] =   16, H_out[3] =   15, max_r =   17
-H_out[0] =   12, H_out[1] =   12, H_out[2] =   14, H_out[3] =   14, max_r =   19
-H_out[0] =   13, H_out[1] =   11, H_out[2] =   15, H_out[3] =   18, max_r =   17
-H_out[0] =    0, H_out[1] =   12, H_out[2] =   14, H_out[3] =   16, max_r =   19
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   12, H_out[3] =   17, max_r =   18
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =   15, max_r =   19
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =   18
-H_out[0] =    6, H_out[1] =    5, H_out[2] =    0, H_out[3] =    0, max_r =   19
-H_out[0] =    9, H_out[1] =    5, H_out[2] =    8, H_out[3] =    0, max_r =   18
-H_out[0] =   10, H_out[1] =    8, H_out[2] =    7, H_out[3] =   11, max_r =   19
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    7, H_out[3] =   10, max_r =   18
-H_out[0] =    7, H_out[1] =    0, H_out[2] =    7, H_out[3] =    9, max_r =   19
-H_out[0] =    6, H_out[1] =    5, H_out[2] =    0, H_out[3] =    8, max_r =   18
-H_out[0] =    5, H_out[1] =    6, H_out[2] =    4, H_out[3] =    0, max_r =   19
-H_out[0] =    7, H_out[1] =    5, H_out[2] =    4, H_out[3] =    6, max_r =   18
-H_out[0] =    7, H_out[1] =    7, H_out[2] =    5, H_out[3] =    5, max_r =   19
-H_out[0] =    6, H_out[1] =    6, H_out[2] =    5, H_out[3] =    4, max_r =   18
-H_out[0] =    6, H_out[1] =    6, H_out[2] =    6, H_out[3] =    4, max_r =   19
-H_out[0] =   10, H_out[1] =    5, H_out[2] =    5, H_out[3] =    4, max_r =   18
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    8, H_out[3] =    8, max_r =   19
-H_out[0] =    7, H_out[1] =    0, H_out[2] =    7, H_out[3] =    6, max_r =   18
-H_out[0] =    0, H_out[1] =    5, H_out[2] =    0, H_out[3] =    7, max_r =   19
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =   18
-H_out[0] =    6, H_out[1] =    3, H_out[2] =    0, H_out[3] =    4, max_r =   19
-H_out[0] =    4, H_out[1] =    7, H_out[2] =    2, H_out[3] =    0, max_r =   18
-H_out[0] =    6, H_out[1] =    5, H_out[2] =    5, H_out[3] =    2, max_r =   19
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    6, H_out[3] =    4, max_r =   18
-H_out[0] =    8, H_out[1] =    5, H_out[2] =    7, H_out[3] =    4, max_r =   19
-H_out[0] =    0, H_out[1] =    7, H_out[2] =    5, H_out[3] =    5, max_r =   18
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    7, H_out[3] =    6, max_r =   19
-H_out[0] =    8, H_out[1] =    4, H_out[2] =    0, H_out[3] =    5, max_r =   18
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    4, H_out[3] =    0, max_r =   19
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    6, H_out[3] =    2, max_r =   18
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    9, H_out[3] =    4, max_r =   19
-H_out[0] =   12, H_out[1] =    7, H_out[2] =    7, H_out[3] =    7, max_r =   18
-H_out[0] =   13, H_out[1] =   10, H_out[2] =    6, H_out[3] =    5, max_r =   19
-H_out[0] =   12, H_out[1] =   14, H_out[2] =    9, H_out[3] =    6, max_r =   18
-H_out[0] =   14, H_out[1] =   12, H_out[2] =   12, H_out[3] =    8, max_r =   19
-H_out[0] =   14, H_out[1] =   14, H_out[2] =   13, H_out[3] =   11, max_r =   18
-H_out[0] =   16, H_out[1] =   13, H_out[2] =   14, H_out[3] =   11, max_r =   19
-H_out[0] =   17, H_out[1] =   16, H_out[2] =   13, H_out[3] =   15, max_r =   18
-H_out[0] =   18, H_out[1] =   15, H_out[2] =   15, H_out[3] =   13, max_r =   19
-H_out[0] =    0, H_out[1] =   19, H_out[2] =   18, H_out[3] =   13, max_r =   18
-H_out[0] =   15, H_out[1] =    0, H_out[2] =   17, H_out[3] =   16, max_r =   19
-H_out[0] =   14, H_out[1] =   16, H_out[2] =    0, H_out[3] =   20, max_r =   19
-H_out[0] =   13, H_out[1] =   15, H_out[2] =   14, H_out[3] =    0, max_r =   19
-H_out[0] =   12, H_out[1] =   16, H_out[2] =   15, H_out[3] =   17, max_r =   20
-H_out[0] =    0, H_out[1] =   14, H_out[2] =   17, H_out[3] =   16, max_r =   19
-H_out[0] =   10, H_out[1] =    0, H_out[2] =   15, H_out[3] =   17, max_r =   20
-H_out[0] =    9, H_out[1] =   12, H_out[2] =    0, H_out[3] =   16, max_r =   19
-H_out[0] =    8, H_out[1] =   11, H_out[2] =   13, H_out[3] =    0, max_r =   20
-H_out[0] =    7, H_out[1] =   10, H_out[2] =   12, H_out[3] =   13, max_r =   19
-H_out[0] =    6, H_out[1] =    9, H_out[2] =   13, H_out[3] =   12, max_r =   20
-H_out[0] =    6, H_out[1] =    8, H_out[2] =   12, H_out[3] =   14, max_r =   19
-H_out[0] =    7, H_out[1] =    8, H_out[2] =   10, H_out[3] =   12, max_r =   20
-H_out[0] =    5, H_out[1] =    6, H_out[2] =    9, H_out[3] =   14, max_r =   19
-H_out[0] =    0, H_out[1] =    6, H_out[2] =   10, H_out[3] =   12, max_r =   20
-H_out[0] =    3, H_out[1] =    0, H_out[2] =    8, H_out[3] =   11, max_r =   19
-H_out[0] =    0, H_out[1] =    3, H_out[2] =    0, H_out[3] =   12, max_r =   20
-H_out[0] =    1, H_out[1] =    0, H_out[2] =    6, H_out[3] =    0, max_r =   19
-H_out[0] =    3, H_out[1] =    1, H_out[2] =    0, H_out[3] =    9, max_r =   20
-H_out[0] =    3, H_out[1] =    2, H_out[2] =    4, H_out[3] =    0, max_r =   19
-H_out[0] =    4, H_out[1] =    2, H_out[2] =    3, H_out[3] =    7, max_r =   20
-H_out[0] =    4, H_out[1] =    3, H_out[2] =    2, H_out[3] =    6, max_r =   19
-H_out[0] =    5, H_out[1] =    3, H_out[2] =    4, H_out[3] =    5, max_r =   20
-H_out[0] =    0, H_out[1] =    3, H_out[2] =    2, H_out[3] =    4, max_r =   19
-H_out[0] =    2, H_out[1] =    0, H_out[2] =    5, H_out[3] =    3, max_r =   20
-H_out[0] =    3, H_out[1] =    0, H_out[2] =    0, H_out[3] =    4, max_r =   19
-H_out[0] =    6, H_out[1] =    2, H_out[2] =    2, H_out[3] =    0, max_r =   20
-H_out[0] =    0, H_out[1] =    5, H_out[2] =    2, H_out[3] =    2, max_r =   19
-H_out[0] =    4, H_out[1] =    0, H_out[2] =    4, H_out[3] =    4, max_r =   20
-H_out[0] =    7, H_out[1] =    3, H_out[2] =    0, H_out[3] =    4, max_r =   19
-H_out[0] =   10, H_out[1] =    6, H_out[2] =    2, H_out[3] =    0, max_r =   20
-H_out[0] =   10, H_out[1] =    9, H_out[2] =    5, H_out[3] =    1, max_r =   19
-H_out[0] =   13, H_out[1] =    9, H_out[2] =    8, H_out[3] =    4, max_r =   20
-H_out[0] =   14, H_out[1] =   12, H_out[2] =    8, H_out[3] =    7, max_r =   19
-H_out[0] =   12, H_out[1] =   12, H_out[2] =   11, H_out[3] =   10, max_r =   20
-H_out[0] =   15, H_out[1] =   13, H_out[2] =   11, H_out[3] =   10, max_r =   19
-H_out[0] =   18, H_out[1] =   14, H_out[2] =   11, H_out[3] =   13, max_r =   20
-H_out[0] =    0, H_out[1] =   17, H_out[2] =   13, H_out[3] =   11, max_r =   19
-H_out[0] =   15, H_out[1] =    0, H_out[2] =   16, H_out[3] =   13, max_r =   20
-H_out[0] =   16, H_out[1] =   14, H_out[2] =    0, H_out[3] =   15, max_r =   19
-H_out[0] =   18, H_out[1] =   14, H_out[2] =   13, H_out[3] =    0, max_r =   20
-H_out[0] =   16, H_out[1] =   18, H_out[2] =   13, H_out[3] =   12, max_r =   19
-H_out[0] =    0, H_out[1] =   17, H_out[2] =   16, H_out[3] =   12, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =   20, H_out[3] =   15, max_r =   19
-H_out[0] =   13, H_out[1] =   14, H_out[2] =    0, H_out[3] =   18, max_r =   20
-H_out[0] =   14, H_out[1] =   13, H_out[2] =   17, H_out[3] =    0, max_r =   20
-H_out[0] =   13, H_out[1] =   15, H_out[2] =   16, H_out[3] =   15, max_r =   20
-H_out[0] =   14, H_out[1] =   13, H_out[2] =   15, H_out[3] =   16, max_r =   20
-H_out[0] =   13, H_out[1] =   15, H_out[2] =   14, H_out[3] =   15, max_r =   20
-H_out[0] =   11, H_out[1] =   13, H_out[2] =   13, H_out[3] =   14, max_r =   20
-H_out[0] =   13, H_out[1] =   12, H_out[2] =   14, H_out[3] =   13, max_r =   20
-H_out[0] =    0, H_out[1] =   13, H_out[2] =   15, H_out[3] =   12, max_r =   20
-H_out[0] =   10, H_out[1] =    0, H_out[2] =   13, H_out[3] =   13, max_r =   20
-H_out[0] =    0, H_out[1] =   10, H_out[2] =    0, H_out[3] =   14, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =   11, H_out[3] =    0, max_r =   20
-H_out[0] =    7, H_out[1] =    8, H_out[2] =    0, H_out[3] =   11, max_r =   20
-H_out[0] =    8, H_out[1] =    7, H_out[2] =    9, H_out[3] =    0, max_r =   20
-H_out[0] =    7, H_out[1] =    9, H_out[2] =   10, H_out[3] =    9, max_r =   20
-H_out[0] =    5, H_out[1] =   10, H_out[2] =    8, H_out[3] =    8, max_r =   20
-H_out[0] =    5, H_out[1] =    8, H_out[2] =    8, H_out[3] =    9, max_r =   20
-H_out[0] =    0, H_out[1] =    7, H_out[2] =    9, H_out[3] =    7, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   10, H_out[3] =    7, max_r =   20
-H_out[0] =    1, H_out[1] =    0, H_out[2] =    0, H_out[3] =   11, max_r =   20
-H_out[0] =    3, H_out[1] =    4, H_out[2] =    0, H_out[3] =    0, max_r =   20
-H_out[0] =    6, H_out[1] =    3, H_out[2] =    6, H_out[3] =    0, max_r =   20
-H_out[0] =    9, H_out[1] =    5, H_out[2] =    6, H_out[3] =    7, max_r =   20
-H_out[0] =    9, H_out[1] =    8, H_out[2] =    5, H_out[3] =    6, max_r =   20
-H_out[0] =   12, H_out[1] =    8, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =   12, H_out[1] =   11, H_out[2] =   10, H_out[3] =    7, max_r =   20
-H_out[0] =   13, H_out[1] =   11, H_out[2] =    9, H_out[3] =    8, max_r =   20
-H_out[0] =   14, H_out[1] =   14, H_out[2] =   10, H_out[3] =    9, max_r =   20
-H_out[0] =    0, H_out[1] =   13, H_out[2] =   13, H_out[3] =    8, max_r =   20
-H_out[0] =   11, H_out[1] =    0, H_out[2] =   13, H_out[3] =   12, max_r =   20
-H_out[0] =   11, H_out[1] =   10, H_out[2] =    0, H_out[3] =   12, max_r =   20
-H_out[0] =   14, H_out[1] =   10, H_out[2] =   10, H_out[3] =    0, max_r =   20
-H_out[0] =   17, H_out[1] =   13, H_out[2] =    9, H_out[3] =    9, max_r =   20
-H_out[0] =    0, H_out[1] =   16, H_out[2] =   12, H_out[3] =   12, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =   15, H_out[3] =   11, max_r =   20
-H_out[0] =   14, H_out[1] =   13, H_out[2] =    0, H_out[3] =   14, max_r =   20
-H_out[0] =   15, H_out[1] =   13, H_out[2] =   12, H_out[3] =    0, max_r =   20
-H_out[0] =   14, H_out[1] =   13, H_out[2] =   15, H_out[3] =   11, max_r =   20
-H_out[0] =   13, H_out[1] =   14, H_out[2] =   13, H_out[3] =   13, max_r =   20
-H_out[0] =   12, H_out[1] =   13, H_out[2] =   15, H_out[3] =   17, max_r =   20
-H_out[0] =   12, H_out[1] =   12, H_out[2] =   13, H_out[3] =   15, max_r =   20
-H_out[0] =   12, H_out[1] =   11, H_out[2] =   15, H_out[3] =   17, max_r =   20
-H_out[0] =    0, H_out[1] =   11, H_out[2] =   13, H_out[3] =   15, max_r =   20
-H_out[0] =    9, H_out[1] =    0, H_out[2] =   13, H_out[3] =   14, max_r =   20
-H_out[0] =    0, H_out[1] =    8, H_out[2] =    0, H_out[3] =   15, max_r =   20
-H_out[0] =    7, H_out[1] =    0, H_out[2] =   10, H_out[3] =    0, max_r =   20
-H_out[0] =    8, H_out[1] =    6, H_out[2] =    0, H_out[3] =   12, max_r =   20
-H_out[0] =    7, H_out[1] =    6, H_out[2] =    8, H_out[3] =    0, max_r =   20
-H_out[0] =    0, H_out[1] =    7, H_out[2] =    7, H_out[3] =   10, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    6, H_out[3] =   10, max_r =   20
-H_out[0] =    9, H_out[1] =    0, H_out[2] =    0, H_out[3] =    9, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    7, H_out[3] =    6, max_r =   20
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    0, H_out[3] =    6, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    3, H_out[3] =    0, max_r =   20
-H_out[0] =    7, H_out[1] =    0, H_out[2] =    3, H_out[3] =    2, max_r =   20
-H_out[0] =    9, H_out[1] =    0, H_out[2] =    4, H_out[3] =    5, max_r =   20
-H_out[0] =    7, H_out[1] =    0, H_out[2] =    4, H_out[3] =    3, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =   10, H_out[1] =    0, H_out[2] =    5, H_out[3] =    5, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =    5, H_out[3] =    8, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    8, H_out[3] =    6, max_r =   20
-H_out[0] =   11, H_out[1] =    0, H_out[2] =   11, H_out[3] =    7, max_r =   20
-H_out[0] =   10, H_out[1] =    0, H_out[2] =    0, H_out[3] =   10, max_r =   20
-H_out[0] =   11, H_out[1] =    0, H_out[2] =    8, H_out[3] =    0, max_r =   20
-H_out[0] =   13, H_out[1] =    0, H_out[2] =    8, H_out[3] =    7, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    8, H_out[3] =    7, max_r =   20
-H_out[0] =   10, H_out[1] =    0, H_out[2] =   11, H_out[3] =    7, max_r =   20
-H_out[0] =   12, H_out[1] =    0, H_out[2] =    0, H_out[3] =   10, max_r =   20
-H_out[0] =   15, H_out[1] =    0, H_out[2] =    8, H_out[3] =    0, max_r =   20
-H_out[0] =   19, H_out[1] =    0, H_out[2] =   10, H_out[3] =    7, max_r =   20
-H_out[0] =   17, H_out[1] =    0, H_out[2] =   13, H_out[3] =    9, max_r =   20
-H_out[0] =   19, H_out[1] =    0, H_out[2] =   16, H_out[3] =   12, max_r =   20
-H_out[0] =   17, H_out[1] =    0, H_out[2] =   14, H_out[3] =   15, max_r =   20
-H_out[0] =   16, H_out[1] =    0, H_out[2] =   16, H_out[3] =   15, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   14, H_out[3] =   15, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =   13, H_out[3] =   15, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =   16, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   11, H_out[3] =    0, max_r =   20
-H_out[0] =   11, H_out[1] =    0, H_out[2] =    0, H_out[3] =   13, max_r =   20
-H_out[0] =   10, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    8, H_out[3] =    0, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    7, H_out[3] =   10, max_r =   20
-H_out[0] =    7, H_out[1] =    0, H_out[2] =    0, H_out[3] =    6, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =   20
-H_out[0] =    7, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =   20
-H_out[0] =    5, H_out[1] =    0, H_out[2] =    3, H_out[3] =    3, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    4, H_out[3] =    6, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    2, H_out[3] =    4, max_r =   20
-H_out[0] =   10, H_out[1] =    0, H_out[2] =    5, H_out[3] =    3, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    4, H_out[3] =    4, max_r =   20
-H_out[0] =    9, H_out[1] =    0, H_out[2] =    7, H_out[3] =    7, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    5, H_out[3] =    6, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    7, H_out[3] =    6, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    0, H_out[3] =    6, max_r =   20
-H_out[0] =    9, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =   20
-H_out[0] =    9, H_out[1] =    0, H_out[2] =    4, H_out[3] =    3, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    6, H_out[1] =    0, H_out[2] =    7, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    0, H_out[3] =    8, max_r =   20
-H_out[0] =   11, H_out[1] =    0, H_out[2] =    4, H_out[3] =    0, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =    9, H_out[3] =    6, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =   12, H_out[3] =    8, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =   11, H_out[3] =   11, max_r =   20
-H_out[0] =   14, H_out[1] =    0, H_out[2] =   12, H_out[3] =   14, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =   11, H_out[3] =   12, max_r =   20
-H_out[0] =   11, H_out[1] =    0, H_out[2] =   12, H_out[3] =   14, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    0, H_out[3] =   12, max_r =   20
-H_out[0] =    0, H_out[1] =    0, H_out[2] =    9, H_out[3] =    0, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    0, H_out[3] =   10, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    0, H_out[3] =    0, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    0, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    7, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    8, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    6, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
-H_out[0] =    8, H_out[1] =    0, H_out[2] =    6, H_out[3] =    5, max_r =   20
+./dat/ref2.dat, ./dat/query2.dat and ./dat/golden2.dat were used for this simulation.
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  2
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] =  6
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 10
+index_j[1] = 14
+index_j[1] = 14
+I =    0, D =    3, H =    3, index_i =   1, index_j = 14, H_previous =    4
+index_j[1] = 14
+index_j[1] = 14
+I =   -2, D =   -2, H =    2, index_i =   2, index_j = 14, H_previous =    3
+index_j[1] = 14
+index_j[1] = 14
+I =   -2, D =    0, H =    0, index_i =   3, index_j = 14, H_previous =    2
+index_j[1] = 14
+index_j[1] = 14
+I =   -2, D =   -1, H =    2, index_i =   4, index_j = 14, H_previous =    0
+index_j[1] = 14
+index_j[1] = 14
+I =    1, D =    0, H =    1, index_i =   5, index_j = 14, H_previous =    2
+index_j[1] = 14
+index_j[1] = 14
+I =    0, D =   -1, H =    2, index_i =   6, index_j = 14, H_previous =    1
+index_j[1] = 14
+index_j[1] = 14
+I =   -1, D =    0, H =    1, index_i =   7, index_j = 14, H_previous =    2
+index_j[1] = 14
+index_j[1] = 14
+I =    2, D =   -1, H =    2, index_i =   8, index_j = 14, H_previous =    1
+index_j[1] = 14
+index_j[1] = 14
+I =    2, D =    0, H =    2, index_i =   9, index_j = 14, H_previous =    2
+index_j[1] = 14
+index_j[1] = 14
+I =    0, D =    0, H =    3, index_i =  10, index_j = 14, H_previous =    2
+index_j[1] = 14
+index_j[1] = 14
+I =   -1, D =    1, H =    1, index_i =  11, index_j = 14, H_previous =    3
+index_j[1] = 14
+index_j[1] = 14
+I =   -1, D =    0, H =    0, index_i =  12, index_j = 14, H_previous =    1
+index_j[1] = 14
+index_j[1] = 14
+I =    2, D =   -1, H =    2, index_i =  13, index_j = 14, H_previous =    0
+index_j[1] = 14
+index_j[1] = 14
+I =    5, D =    0, H =    5, index_i =  14, index_j = 14, H_previous =    2
+index_j[1] = 14
+index_j[1] = 14
+I =    5, D =    3, H =    8, index_i =  15, index_j = 14, H_previous =    5
+index_j[1] = 14
+index_j[1] = 14
+I =    4, D =    6, H =    6, index_i =  16, index_j = 14, H_previous =    8
+index_j[1] = 14
+index_j[1] = 14
+I =    7, D =    5, H =    7, index_i =  17, index_j = 14, H_previous =    6
+index_j[1] = 14
+index_j[1] = 14
+I =   10, D =    5, H =   10, index_i =  18, index_j = 14, H_previous =    7
+index_j[1] = 14
+index_j[1] = 14
+I =   13, D =    8, H =   13, index_i =  19, index_j = 14, H_previous =   10
+index_j[1] = 14
+index_j[1] = 14
+I =   16, D =   11, H =   16, index_i =  20, index_j = 14, H_previous =   13
+index_j[1] = 14
+index_j[1] = 14
+I =   19, D =   14, H =   19, index_i =  21, index_j = 14, H_previous =   16
+index_j[1] = 14
+index_j[1] = 14
+I =   22, D =   17, H =   22, index_i =  22, index_j = 14, H_previous =   19
+index_j[1] = 14
+index_j[1] = 14
+I =   20, D =   20, H =   26, index_i =  23, index_j = 14, H_previous =   22
+index_j[1] = 14
+index_j[1] = 14
+I =   19, D =   24, H =   24, index_i =  24, index_j = 14, H_previous =   26
+index_j[1] = 14
+index_j[1] = 14
+I =   18, D =   23, H =   23, index_i =  25, index_j = 14, H_previous =   24
+index_j[1] = 14
+index_j[1] = 14
+I =   17, D =   22, H =   22, index_i =  26, index_j = 14, H_previous =   23
+index_j[1] = 14
+index_j[1] = 14
+I =   16, D =   21, H =   21, index_i =  27, index_j = 14, H_previous =   22
+index_j[1] = 14
+index_j[1] = 14
+I =   15, D =   20, H =   20, index_i =  28, index_j = 14, H_previous =   21
+index_j[1] = 14
+index_j[1] = 14
+I =   14, D =   19, H =   19, index_i =  29, index_j = 14, H_previous =   20
+index_j[1] = 14
+index_j[1] = 14
+I =   13, D =   18, H =   18, index_i =  30, index_j = 14, H_previous =   19
+index_j[1] = 14
+index_j[1] = 14
+I =   12, D =   17, H =   17, index_i =  31, index_j = 14, H_previous =   18
+index_j[1] = 14
+index_j[1] = 14
+I =   11, D =   16, H =   16, index_i =  32, index_j = 14, H_previous =   17
+index_j[1] = 14
+index_j[1] = 14
+I =   10, D =   15, H =   15, index_i =  33, index_j = 14, H_previous =   16
+index_j[1] = 14
+index_j[1] = 14
+I =    9, D =   14, H =   14, index_i =  34, index_j = 14, H_previous =   15
+index_j[1] = 14
+index_j[1] = 14
+I =    8, D =   13, H =   13, index_i =  35, index_j = 14, H_previous =   14
+index_j[1] = 14
+index_j[1] = 14
+I =    7, D =   12, H =   12, index_i =  36, index_j = 14, H_previous =   13
+index_j[1] = 14
+index_j[1] = 14
+I =    9, D =   11, H =   11, index_i =  37, index_j = 14, H_previous =   12
+index_j[1] = 14
+index_j[1] = 14
+I =    9, D =   10, H =   12, index_i =  38, index_j = 14, H_previous =   11
+index_j[1] = 14
+index_j[1] = 14
+I =   12, D =   10, H =   12, index_i =  39, index_j = 14, H_previous =   12
+index_j[1] = 14
+index_j[1] = 14
+I =   10, D =   10, H =   13, index_i =  40, index_j = 14, H_previous =   12
+index_j[1] = 14
+index_j[1] = 14
+I =    9, D =   11, H =   11, index_i =  41, index_j = 14, H_previous =   13
+index_j[1] = 14
+index_j[1] = 14
+I =   10, D =   10, H =   10, index_i =  42, index_j = 14, H_previous =   11
+index_j[1] = 14
+index_j[1] = 14
+I =   10, D =    9, H =   14, index_i =  43, index_j = 14, H_previous =   10
+index_j[1] = 14
+index_j[1] = 14
+I =    8, D =   12, H =   12, index_i =  44, index_j = 14, H_previous =   14
+index_j[1] = 14
+index_j[1] = 14
+I =   10, D =   11, H =   11, index_i =  45, index_j = 14, H_previous =   12
+index_j[1] = 14
+index_j[1] = 14
+I =    9, D =   10, H =   14, index_i =  46, index_j = 14, H_previous =   11
+index_j[1] = 14
+index_j[1] = 14
+I =    7, D =   12, H =   12, index_i =  47, index_j = 14, H_previous =   14
+index_j[1] = 14
+index_j[1] = 14
+I =    6, D =   11, H =   11, index_i =  48, index_j = 14, H_previous =   12
+index_j[1] = 14
+index_j[1] = 14
+I =    5, D =   10, H =   10, index_i =  49, index_j = 14, H_previous =   11
+index_j[1] = 14
+index_j[1] = 14
+I =    4, D =    9, H =    9, index_i =  50, index_j = 14, H_previous =   10
+index_j[1] = 14
+index_j[1] = 14
+I =    3, D =    8, H =    8, index_i =  51, index_j = 14, H_previous =    9
+index_j[1] = 14
+index_j[1] = 14
+I =    6, D =    7, H =    7, index_i =  52, index_j = 14, H_previous =    8
+index_j[1] = 14
+index_j[1] = 14
+I =    6, D =    6, H =    7, index_i =  53, index_j = 14, H_previous =    7
+index_j[1] = 14
+index_j[1] = 14
+I =    6, D =    5, H =    6, index_i =  54, index_j = 14, H_previous =    7
+index_j[1] = 14
+index_j[1] = 14
+I =    9, D =    4, H =    9, index_i =  55, index_j = 14, H_previous =    6
+index_j[1] = 14
+index_j[1] = 14
+I =   10, D =    7, H =   10, index_i =  56, index_j = 14, H_previous =    9
+index_j[1] = 14
+index_j[1] = 14
+I =    9, D =    8, H =   11, index_i =  57, index_j = 14, H_previous =   10
+index_j[1] = 14
+index_j[1] = 14
+I =    8, D =    9, H =   10, index_i =  58, index_j = 14, H_previous =   11
+index_j[1] = 14
+index_j[1] = 14
+I =    7, D =    8, H =    9, index_i =  59, index_j = 14, H_previous =   10
+index_j[1] = 14
+index_j[1] = 14
+I =    6, D =    7, H =    8, index_i =  60, index_j = 14, H_previous =    9
+index_j[1] = 14
+index_j[1] = 14
+I =    4, D =    6, H =    7, index_i =  61, index_j = 14, H_previous =    8
+index_j[1] = 14
+index_j[1] = 14
+I =    3, D =    5, H =    8, index_i =  62, index_j = 14, H_previous =    7
+index_j[1] = 14
+index_j[1] = 14
+I =    2, D =    6, H =    6, index_i =  63, index_j = 14, H_previous =    8
+I =    1, D =    5, H =    5, index_i =  64, index_j = 14, H_previous =    6
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 18
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 22
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 26
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 30
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 34
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 38
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 42
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
+index_j[1] = 46
 
 
--------------- The test result is ..... FAIL --------------
+====================== The test result is ..... PASS ========================
 
------------------- Simulation stop here. ------------------
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-   correct answer:  max= 40, pos_ref= 64, pos_query= 32
+        *************************************************            
+        **                                             **      /|____|\
+        **             Congratulations !!              **    ((´-___- `))
+        **                                             **   ///        \\\
+        **  All data have been generated successfully! **  /||          ||\
+        **                                             **  w|\ m      m /|w
+        *************************************************    \(o)____(o)/
 
-   but your answer: max= 20, pos_ref= 60, pos_query= 39
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   total cycle:         873
-Simulation complete via $finish(1) at time 8740 NS + 0
-./tb.v:144           $finish;
+============================================================================
+   total cycle:         840
+Simulation complete via $finish(1) at time 8410 NS + 0
+./tb.v:134           $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s084: Exiting on Jun 08, 2022 at 00:48:13 CST  (total: 00:00:03)
+TOOL:	ncverilog	15.20-s084: Exiting on Jun 08, 2022 at 03:04:05 CST  (total: 00:00:04)

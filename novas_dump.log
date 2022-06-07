@@ -117,11 +117,11 @@ Runtime command line arguments:
 argv[0]=ncverilog
 argv[1]=tb.v
 argv[2]=SW.v
-argv[3]=+define+tb1
+argv[3]=+define+tb2
 120 profile - 100
-          CPU/Mem usage: 0.170 sys,  2.490 user,  67.57M sys,  0.00M vm
+          CPU/Mem usage: 0.140 sys,  2.480 user,  67.56M sys,  0.00M vm
 121 VC callback profile - scalar:0 vector:0
-122 Wed Jun  8 00:48:13 2022
+122 Wed Jun  8 03:04:05 2022
 123 pliAppInit
 124 FSDB_GATE is disabled.
 125 Enable Parallel Dumping.
