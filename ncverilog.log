@@ -1,35 +1,55 @@
 ncverilog: 15.20-s084: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s084: Started on May 27, 2022 at 19:01:54 CST
+TOOL:	ncverilog	15.20-s084: Started on Jun 07, 2022 at 21:06:30 CST
 ncverilog
 	tb.v
 	SW.v
 	+define+tb1
+Recompiling... reason: file './SW.v' is newer than expected.
+	expected: Tue Jun  7 21:05:49 2022
+	actual:   Tue Jun  7 21:06:21 2022
 file: SW.v
-                    D_boundary_w = D_boundary_r;
-                               |
-ncvlog: *E,UNDIDN (SW.v,179|31): 'D_boundary_w': undeclared identifier [12.5(IEEE)].
-                    I_boundary_w = I_boundary_r;
-                               |
-ncvlog: *E,UNDIDN (SW.v,180|31): 'I_boundary_w': undeclared identifier [12.5(IEEE)].
-                    H_boundary_w = H_boundary_r;
-                               |
-ncvlog: *E,UNDIDN (SW.v,181|31): 'H_boundary_w': undeclared identifier [12.5(IEEE)].
-                    H_boundary_w = H_boundary_r;
-                                              |
-ncvlog: *E,UNDIDN (SW.v,181|46): 'H_boundary_r': undeclared identifier [12.5(IEEE)].
-                D_boundary_w = D_boundary_r;
-                           |
-ncvlog: *E,UNDIDN (SW.v,219|27): 'D_boundary_w': undeclared identifier [12.5(IEEE)].
-                I_boundary_w = I_boundary_r;
-                           |
-ncvlog: *E,UNDIDN (SW.v,220|27): 'I_boundary_w': undeclared identifier [12.5(IEEE)].
-                H_boundary_w = H_boundary_r;
-                           |
-ncvlog: *E,UNDIDN (SW.v,221|27): 'H_boundary_w': undeclared identifier [12.5(IEEE)].
-                H_boundary_w = H_boundary_r;
-                                          |
-ncvlog: *E,UNDIDN (SW.v,221|42): 'H_boundary_r': undeclared identifier [12.5(IEEE)].
 	module worklib.SW:v
-		errors: 8, warnings: 0
-ncverilog: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
-TOOL:	ncverilog	15.20-s084: Exiting on May 27, 2022 at 19:01:54 CST  (total: 00:00:00)
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.SW:v <0x3f712c0e>
+			streams:  25, words: 16623
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  4       3
+		Registers:               78      74
+		Scalar wires:             4       -
+		Vectored wires:          67       -
+		Always blocks:           10       9
+		Initial blocks:           8       8
+		Cont. assignments:        0       4
+		Pseudo assignments:      15      15
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tb:v
+Loading snapshot worklib.tb:v .................... Done
+*Verdi* Loading libsscore_ius152.so
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+./dat/ref1.dat, ./dat/query1.dat and ./dat/golden1.dat were used for this simulation.
+I =   0, D =  -2, H =   0, index_i =          1, index_j =          2, H_previous =   2
+
+
+-------------- The test result is ..... FAIL --------------
+
+------------------ Simulation stop here. ------------------
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+   correct answer:  max= 40, pos_ref= 64, pos_query= 32
+
+   but your answer: max=  x, pos_ref=  x, pos_query=  x
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   total cycle:        3141
+Simulation complete via $finish(1) at time 31420 NS + 0
+./tb.v:144           $finish;
+ncsim> exit
+TOOL:	ncverilog	15.20-s084: Exiting on Jun 07, 2022 at 21:06:34 CST  (total: 00:00:04)

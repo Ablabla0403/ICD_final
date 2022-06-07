@@ -1,23 +1,35 @@
-module PE (query, ref, H_lu, H_l, H_u, I, D, H, I, D)
+
+module PE (query, ref, H_lu, H_l, H_u, I_u, D_l, H, I, D);
     input  [1:0]  query;
     input  [1:0]  ref;
     input  signed [5:0]  H_l, H_u, H_lu, I_u, D_l;
-    output signed [5:0]  H, I, D;
-    wire signed [3:0] S;
-    I = (H_u - 6'd2) > (I_u - 6'd1) ? (H_u - 6'd2) : (I_u - 6'd1);
-    D = (H_l - 6'd2) > (D_l - 6'd1) ? (H_l - 6'd2) : (I_l - 6'd1);
-    S = (ref == query) ? 2 : -1;
-    if (H_lu + S >= I && H_lu + S >= D && H_lu + S >= 0) begin
-        H = H_lu + S;
-    end
-    else if (I >= H_lu + S && I >= D && I >= 0) begin
-        H = I;
-    end
-    else if (D >= H_lu + S && D >=I && D >= 0) begin
-        H = D;
-    end
-    else begin
-        H = 6'd0;
+    output reg signed [5:0]  H, I, D;
+    reg signed [3:0] S;
+    
+    
+    always @(*) begin
+        I = (((H_u - 6'sd2) > (I_u - 6'sd1)) ? (H_u - 6'sd2) : (I_u - 6'sd1));
+        D = (((H_l - 6'sd2) > (D_l - 6'sd1)) ? (H_l - 6'sd2) : (D_l - 6'sd1));
+        S = ((ref == query) ? 2 : -1);
+        // $display("hihi %d %d D = %d, S = %d", (H_l - 6'sd2), (D_l - 6'sd1), D, S);
+        // $display("H_u + S = %d, S = %d, H_u = %d, ref = %d, query = %d", I, S, H_u, ref, query);
+        // $display("conditions, %d %d %d", H_lu + S, D, I);
+        if (H_lu + S >= I && H_lu + S >= D && H_lu + S >= 0) begin
+            H = H_lu + S;
+            // $display("H1 = %d", H);
+        end
+        else if (I >= H_lu + S && I >= D && I >= 0) begin
+            H = I;
+            // $display("H2 = %d", H);
+        end
+        else if (D >= H_lu + S && D >=I && D >= 0) begin
+            H = D;
+            // $display("H3 = %d", H);
+        end
+        else begin
+            H = 6'd0;
+            // $display("H4 = %d", H);
+        end
     end
 
 endmodule
@@ -75,7 +87,7 @@ reg  signed [5:0]  H_PE_w[0:15];
 reg         [6:0]  index_i, index_i_nxt;    // num = 64
 reg         [5:0]  index_j, index_j_nxt;    // num = 48 
 reg         [2:0]  state, state_nxt;
-reg         [5:0]  counter_R, counter_R_nxt; // num = 64
+reg         [6:0]  counter_R, counter_R_nxt; // num = 64
 reg         [5:0]  counter_Q, counter_Q_nxt; // num = 48
 reg         [7:0]  counter_cal, counter_cal_nxt; // num = 16*12 = 192
 
@@ -84,9 +96,9 @@ reg         [7:0]  counter_cal, counter_cal_nxt; // num = 16*12 = 192
 reg                valid_r, valid_w;
 reg         [1:0]  data_ref_r, data_ref_w;
 reg         [1:0]  data_query_r, data_query_w;
-reg         [1:0]  R[63:0];
+reg         [1:0]  R[64:0];
 reg         [1:0]  R_nxt_r, R_nxt_w;
-reg         [1:0]  Q[47:0];
+reg         [1:0]  Q[48:0];
 reg         [1:0]  Q_nxt_r, Q_nxt_w;
 
 
@@ -95,6 +107,13 @@ reg  signed [WIDTH_SCORE - 1:0]       max_r, max_w;
 reg         [WIDTH_POS_REF - 1:0]     pos_ref_r, pos_ref_w;
 reg         [WIDTH_POS_QUERY - 1:0]   pos_query_r, pos_query_w; 
 reg                                   finish_r, finish_w;
+
+reg [1:0] PE_Q[15:0], PE_R[15:0];
+reg [5:0] PE_H_S[15:0], PE_H_V[15:0], PE_H_H[15:0], PE_I_V[15:0], PE_D_H[15:0];
+reg signed [5:0] H_out[15:0], H_out_previous[15:0];
+reg signed [5:0] I_out[15:0], D_out[15:0];
+// wires
+wire [5:0] H[15:0], D[15:0], I[15:0];
 
 assign      finish = finish_r;
 assign      max = max_r;
@@ -105,6 +124,9 @@ assign      pos_query = pos_query_r;
 //------------------------------------------------------------------
 // submodule
 //------------------------------------------------------------------
+    // PE PE1(
+    //     .query(), ref, H_lu, H_l, H_u, I_u, D_l, H, I, D
+    // );
 
     always @(*) begin
         case (state)
@@ -115,8 +137,10 @@ assign      pos_query = pos_query_r;
                     state_nxt = IDLE;
             end
             READ: begin
-                if (counter_R == 64 && counter_Q == 48) // The last item is read
+                if (counter_R == 64 && counter_Q == 48) begin // The last item is read
                     state_nxt = CAL;
+                    // $display("The next state is CAL lalalalalalalalalalala");
+                end
                 else
                     state_nxt = READ;
             end
@@ -143,6 +167,8 @@ assign      pos_query = pos_query_r;
         valid_w = valid;
         data_ref_w = data_ref;
         data_query_w = data_query;
+        index_i_nxt = index_i;
+        index_j_nxt = index_j;
 
         case (state)
             READ: begin
@@ -150,6 +176,7 @@ assign      pos_query = pos_query_r;
                     if (counter_R < 64) begin
                         counter_R_nxt = counter_R + 1;
                         R_nxt_w = data_ref_r;
+                        // $display("counter_R_nxt = %d", counter_R_nxt);
                     end
                     else begin
                         counter_R_nxt = counter_R;
@@ -159,6 +186,7 @@ assign      pos_query = pos_query_r;
                     if (counter_Q < 48) begin
                         counter_Q_nxt = counter_Q + 1;
                         Q_nxt_w = data_query_r;
+                        // $display("counter_Q = %d", counter_Q);
                     end
                     else begin
                         counter_Q_nxt = counter_Q;
@@ -182,135 +210,173 @@ assign      pos_query = pos_query_r;
         endcase
     end
     
+
+    // submodules
+    PE PE1(.query(PE_Q[0]), .ref(PE_R[0]), .H_lu(PE_H_S[0]), .H_l(PE_H_H[0]), .H_u(PE_H_V[0]), .I_u(PE_I_V[0]), .D_l(PE_D_H[0]), .H(H[0]), .I(I[0]), .D(D[0]));
+    PE PE2(.query(PE_Q[1]), .ref(PE_R[1]), .H_lu(PE_H_S[1]), .H_l(PE_H_H[1]), .H_u(PE_H_V[1]), .I_u(PE_I_V[1]), .D_l(PE_D_H[1]), .H(H[1]), .I(I[1]), .D(D[1]));
+
     always @(*) begin
         case (state)
             CAL: begin
+                
                 // case for PE1
-                if (index_i == 1 && index_j == 0) begin
-                    PE1(6'b0, 6'b0, 6'b0, -15, -15, I_w[0], D_w[0], H_w[0]);
-                    $display("I = %i, D = %i, H = %i", I_w[0], D_w[0],  H_w[0]);
-                end
-                else if (index_i == 64) begin
-                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE1(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
+                    if (index_i == 1 && index_j == 1) begin
+                        PE_R[0] = R[1];
+                        PE_Q[0] = Q[1];
+                        PE_H_S[0] = 6'b0;
+                        PE_H_V[0] = 6'b0;
+                        PE_H_H[0] = 6'b0;
+                        PE_I_V[0] = -6'd15;
+                        PE_D_H[0] = -6'd15;
+                    end
+                    else if (index_j == 1) begin
+                        PE_R[0] = R[index_i];
+                        PE_Q[0] = Q[index_j];
+                        PE_H_S[0] = 6'b0;
+                        PE_H_V[0] = 6'b0;
+                        PE_H_H[0] = H_out[0];
+                        PE_I_V[0] = -6'd15;
+                        PE_D_H[0] = D_out[0];
+                    end
+                    else begin
+                        PE_R[0] = R[index_i];
+                        PE_Q[0] = Q[index_j];
+                        PE_H_S[0] = 6'b0;
+                        PE_H_V[0] = 6'b0;
+                        PE_H_H[0] = 6'b0;
+                        PE_I_V[0] = -6'd15;
+                        PE_D_H[0] = -6'd15;
+                        // $display("hihi I = %d, D = %d, H = %d", I_out, D_out,  H_out);
+                    end
+                
 
                 // case for PE2
-                if (index_i > 1 && index_i <= 64) begin
-                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                if (index_i == 2) begin
+                    PE_R[1] = R[index_i - 1];
+                    PE_Q[1] = Q[index_j + 1];
+                    PE_H_S[1] = 6'b0;
+                    PE_H_V[1] = H_out[0];
+                    PE_H_H[1] = 6'b0;
+                    PE_I_V[1] = I_out[0];
+                    PE_D_H[1] = -6'd15;
                 end
-                else if (index_i == 1 && index_j > 1) begin 
-                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                else if (index_i > 2) begin 
+                    PE_R[1] = R[index_i - 1];
+                    PE_Q[1] = Q[index_j + 1];
+                    PE_H_S[1] = H_out_previous[0];
+                    PE_H_V[1] = H_out[0];
+                    PE_H_H[1] = H_out[1];
+                    PE_I_V[1] = I_out[0];
+                    PE_D_H[1] = D_out[1];
                 end
-                else begin
-                    PE2(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE2
+                // else begin
+                //     PE2(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE2
 
-                // case for PE3
-                if ((index_i > 2 && index_i < 64) || index_i == 1) begin
-                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 2 && index_j > 1) begin 
-                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE3
+                // // case for PE3
+                // if ((index_i > 2 && index_i < 64) || index_i == 1) begin
+                //     PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 2 && index_j > 1) begin 
+                //     PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE3(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE3
 
-                // case for PE4
-                if ((index_i > 3 && index_i < 64) || index_i < 3) begin
-                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 2 && index_j > 1) begin 
-                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE4
+                // // case for PE4
+                // if ((index_i > 3 && index_i < 64) || index_i < 3) begin
+                //     PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 2 && index_j > 1) begin 
+                //     PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE4
 
-                // case for PE4
-                if ((index_i > 3 && index_i < 64) || index_i < 3) begin
-                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 2 && index_j > 1) begin 
-                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE4
+                // // case for PE4
+                // if ((index_i > 3 && index_i < 64) || index_i < 3) begin
+                //     PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 2 && index_j > 1) begin 
+                //     PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE4(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE4
 
-                // case for PE5
-                if ((index_i > 4 && index_i < 64) || index_i < 4) begin
-                    PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 4 && index_j > 1) begin 
-                    PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE5
+                // // case for PE5
+                // if ((index_i > 4 && index_i < 64) || index_i < 4) begin
+                //     PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 4 && index_j > 1) begin 
+                //     PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE5(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE5
 
-                // case for PE6
-                if ((index_i > 5 && index_i < 64) || index_i < 5) begin
-                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 5 && index_j > 1) begin 
-                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE6
+                // // case for PE6
+                // if ((index_i > 5 && index_i < 64) || index_i < 5) begin
+                //     PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 5 && index_j > 1) begin 
+                //     PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE6
 
-                // case for PE6
-                if ((index_i > 5 && index_i < 64) || index_i < 5) begin
-                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 5 && index_j > 1) begin 
-                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE6
+                // // case for PE6
+                // if ((index_i > 5 && index_i < 64) || index_i < 5) begin
+                //     PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 5 && index_j > 1) begin 
+                //     PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE6(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE6
 
-                // case for PE7
-                if ((index_i > 6 && index_i < 64) || index_i < 6) begin
-                    PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 6 && index_j > 1) begin
-                    PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE7
+                // // case for PE7
+                // if ((index_i > 6 && index_i < 64) || index_i < 6) begin
+                //     PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 6 && index_j > 1) begin
+                //     PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE7(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE7
 
-                // case for PE8
-                if ((index_i > 7 && index_i < 64) || index_i < 7) begin
-                    PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else if (index_i == 7 && index_j > 1) begin
-                    PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                else begin
-                    PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
-                end
-                // end of case PE8
-                if (index_i < 64) begin
-                    index_i_nxt = index_i + 6'b1;
+                // // case for PE8
+                // if ((index_i > 7 && index_i < 64) || index_i < 7) begin
+                //     PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else if (index_i == 7 && index_j > 1) begin
+                //     PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // else begin
+                //     PE8(H_H[0], H_H[1], H_V[0], I[0], D[0], I_w[0], D_w[0], H_H_w[0], H_H_w[1], H_V_w[0]);
+                // end
+                // // end of case PE8
+                if (index_i < 7'd64) begin
+                    index_i_nxt = index_i + 7'b1;
+                    // $display("index = %d", index_i);
                     index_j_nxt = index_j;
                 end
-                else if(index_i == 64 && index_j < 48) begin
-                    index_i_nxt = 6'b0;
-                    index_j_nxt = index_j + 6'b1;
+                else if(index_i == 7'd64 && index_j < 7'd48) begin
+                    index_i_nxt = 7'b1;
+                    index_j_nxt = index_j + 7'b1;
                 end
                 else begin
                     finish_w = 1;
@@ -336,10 +402,10 @@ assign      pos_query = pos_query_r;
         if(reset) begin
             R_nxt_r <= 0;
             Q_nxt_r <= 0;
-            index_i <= 0;
-            index_j <= 0;
-            counter_R <= 0;
-            counter_Q <= 0;
+            index_i <= 1;
+            index_j <= 1;
+            counter_R <= 1;
+            counter_Q <= 1;
             counter_cal <= 0;
             state <= 0;
             finish_r <= 0;
@@ -389,7 +455,15 @@ assign      pos_query = pos_query_r;
             H_2_boundary_r[2+index_j*4] <= new_H_2_w[2];
             H_2_boundary_r[3+index_j*4] <= new_H_2_w[3];
             H_2_boundary_r[4+index_j*4] <= new_H_2_w[4];
-
+            H_out[0] <= H[0];
+            H_out_previous[0] <= H_out[0];
+            I_out[0] <= I[0];
+            D_out[0] <= D[0];
+            H_out[1] <= H[1];
+            I_out[1] <= I[1];
+            D_out[1] <= D[1];
+            if (index_i == 3 && index_j == 1)
+                $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[1], D_out[1],  H_out[1], index_i - 2, index_j + 1, H_out_previous[0]);
         end
     end
     
