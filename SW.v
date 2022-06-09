@@ -11,24 +11,17 @@ module PE (query, ref, H_lu, H_l, H_u, I_u, D_l, H, I, D);
         I = (((H_u - 6'sd2) > (I_u - 6'sd1)) ? (H_u - 6'sd2) : (I_u - 6'sd1));
         D = (((H_l - 6'sd2) > (D_l - 6'sd1)) ? (H_l - 6'sd2) : (D_l - 6'sd1));
         S = ((ref == query) ? 2 : -1);
-        // $display("hihi %d %d D = %d, S = %d", (H_l - 6'sd2), (D_l - 6'sd1), D, S);
-        // $display("H_u + S = %d, S = %d, H_u = %d, ref = %d, query = %d", I, S, H_u, ref, query);
-        // $display("conditions, %d %d %d", H_lu + S, D, I);
         if (H_lu + S >= I && H_lu + S >= D && H_lu + S >= 0) begin
             H = H_lu + S;
-            // $display("H1 = %d", H);
         end
         else if (I >= H_lu + S && I >= D && I >= 0) begin
             H = I;
-            // $display("H2 = %d", H);
         end
         else if (D >= H_lu + S && D >=I && D >= 0) begin
             H = D;
-            // $display("H3 = %d", H);
         end
         else begin
             H = 8'd0;
-            // $display("H4 = %d", H);
         end
     end
 
@@ -154,9 +147,7 @@ assign      pos_query = pos_query_r;
 //------------------------------------------------------------------
 
     always @(*) begin
-        valid_w = valid;
-        data_ref_w = data_ref;
-        data_query_w = data_query;
+        
 
         case (state)
             READ: begin
@@ -218,6 +209,67 @@ assign      pos_query = pos_query_r;
     PE PE16(.query(PE_Q[15]), .ref(PE_R[15]), .H_lu(PE_H_S[15]), .H_l(PE_H_H[15]), .H_u(PE_H_V[15]), .I_u(PE_I_V[15]), .D_l(PE_D_H[15]), .H(H[15]), .I(I[15]), .D(D[15]));
 
     always @(*) begin
+        index_i_nxt[0] = index_i[0];
+        index_j_nxt[0] = index_j[0];
+        index_i_nxt[1] = index_i[1];
+        index_j_nxt[1] = index_j[1];
+        index_i_nxt[2] = index_i[2];
+        index_j_nxt[2] = index_j[2];
+        index_i_nxt[3] = index_i[3];
+        index_j_nxt[3] = index_j[3];
+        index_i_nxt[4] = index_i[4];
+        index_j_nxt[4] = index_j[4];
+        index_i_nxt[5] = index_i[5];
+        index_j_nxt[5] = index_j[5];
+        index_i_nxt[6] = index_i[6];
+        index_j_nxt[6] = index_j[6];
+        index_i_nxt[7] = index_i[7];
+        index_j_nxt[7] = index_j[7];
+        index_i_nxt[8] = index_i[8];
+        index_j_nxt[8] = index_j[8];
+        index_i_nxt[9] = index_i[9];
+        index_j_nxt[9] = index_j[9];
+        index_i_nxt[10] = index_i[10];
+        index_j_nxt[10] = index_j[10];
+        index_i_nxt[11] = index_i[11];
+        index_j_nxt[11] = index_j[11];
+        index_i_nxt[12] = index_i[12];
+        index_j_nxt[12] = index_j[12];
+        index_i_nxt[13] = index_i[13];
+        index_j_nxt[13] = index_j[13];
+        index_i_nxt[14] = index_i[14];
+        index_j_nxt[14] = index_j[14];
+        index_i_nxt[15] = index_i[15];
+        index_j_nxt[15] = index_j[15];
+        valid_w = valid;
+        data_ref_w = data_ref;
+        data_query_w = data_query;
+        finish_w = finish_r;
+        max_w = max_r;
+        pos_ref_w = pos_ref_r;
+        pos_query_w = pos_query_r;
+        for ( i = 0; i < 16; i=i+1) begin
+            PE_H_S[i] = 8'd0;
+        end
+        for ( i = 0; i < 16; i=i+1) begin
+            PE_H_V[i] = 8'd0;
+        end
+        for ( i = 0; i < 16; i=i+1) begin
+            PE_H_H[i] = 8'd0;
+        end
+        for ( i = 0; i < 16; i=i+1) begin
+            PE_R[i] = 8'd0;
+        end
+        for ( i = 0; i < 16; i=i+1) begin
+            PE_Q[i] = 8'd0;
+        end
+        for ( i = 0; i < 16; i=i+1) begin
+            PE_D_H[i] = 8'd0;
+        end
+        for ( i = 0; i < 16; i=i+1) begin
+            PE_I_V[i] = 8'd0;
+        end
+
         case (state)
             CAL: begin
                 
@@ -258,10 +310,6 @@ assign      pos_query = pos_query_r;
                         PE_H_H[0] = H_out[0];
                         PE_I_V[0] = I_last[index_i[0]];
                         PE_D_H[0] = D_out[0];
-                        // if(index_j[0] == 5) begin
-                        // $display("index_i[0] = %d, index_j[0] = %d", index_i[0], index_j[0]);
-                        // $display("H_last - 1 = %d, H_last = %d, I = %d", H_last[index_i[0] - 1], H_last[index_i[0]],  I_last[index_i[0]]);
-                        // end
                     end
 
                 
@@ -936,8 +984,11 @@ assign      pos_query = pos_query_r;
                 end
                 else begin
                     max_w = max_r;
+                    pos_ref_w = pos_ref_r;
+                    pos_query_w = pos_query_r;
                 end
 
+                // index for PE1
                 if (index_i[0] < 7'd64) begin
                     index_i_nxt[0] = index_i[0] + 7'b1;
                     index_j_nxt[0] = index_j[0];
@@ -1141,7 +1192,7 @@ assign      pos_query = pos_query_r;
                     index_j_nxt[14] = index_j[14];
                 end
                 else if(index_i[14] == 7'd64 && index_j[14] < 7'd47) begin
-                    index_i_nxt[14] = 7'b1;
+                    index_i_nxt[14] = 1;
                     index_j_nxt[14] = index_j[14] + 7'd16;
                 end
                 else begin
@@ -1155,7 +1206,7 @@ assign      pos_query = pos_query_r;
                     index_j_nxt[15] = index_j[15];
                 end
                 else if(index_i[15] == 7'd64 && index_j[15] < 7'd48) begin
-                    index_i_nxt[15] = 7'b1;
+                    index_i_nxt[15] = 1;
                     index_j_nxt[15] = index_j[15] + 7'd16;
                 end
                 else if(index_i[15] == 7'd64 && index_j[15] == 7'd48) begin
@@ -1170,13 +1221,10 @@ assign      pos_query = pos_query_r;
                 
             end
         endcase
-    end
-
-    always @(*) begin
-        case (state)
-            READY: finish_w = 1;
-            default: finish_w = finish_r;
-        endcase
+        // case (state)
+        //     READY: finish_w = 1;
+        //     default: finish_w = finish_r;
+        // endcase
     end
 
 //------------------------------------------------------------------
@@ -1218,45 +1266,12 @@ assign      pos_query = pos_query_r;
             index_j[14] <= 15;
             index_i[15] <= 1;
             index_j[15] <= 16;
-            index_i_nxt[0] <= 1;
-            index_j_nxt[0] <= 1;
-            index_i_nxt[1] <= 1;
-            index_j_nxt[1] <= 2;
-            index_i_nxt[2] <= 1;
-            index_j_nxt[2] <= 3;
-            index_i_nxt[3] <= 1;
-            index_j_nxt[3] <= 4;
-            index_i_nxt[4] <= 1;
-            index_j_nxt[4] <= 5;
-            index_i_nxt[5] <= 1;
-            index_j_nxt[5] <= 6;
-            index_i_nxt[6] <= 1;
-            index_j_nxt[6] <= 7;
-            index_i_nxt[7] <= 1;
-            index_j_nxt[7] <= 8;
-            index_i_nxt[8] <= 1;
-            index_j_nxt[8] <= 9;
-            index_i_nxt[9] <= 1;
-            index_j_nxt[9] <= 10;
-            index_i_nxt[10] <= 1;
-            index_j_nxt[10] <= 11;
-            index_i_nxt[11] <= 1;
-            index_j_nxt[11] <= 12;
-            index_i_nxt[12] <= 1;
-            index_j_nxt[12] <= 13;
-            index_i_nxt[13] <= 1;
-            index_j_nxt[13] <= 14;
-            index_i_nxt[14] <= 1;
-            index_j_nxt[14] <= 15;
-            index_i_nxt[15] <= 1;
-            index_j_nxt[15] <= 16;
             counter_R <= 1;
             counter_Q <= 1;
             counter_cal <= 0;
             state <= 0;
             finish_r <= 0;
             max_r <= 0;
-            max_w <= 0;
             pos_ref_r <= 0;
             pos_query_r <= 0;
             valid_r <= 0;
@@ -1314,80 +1329,15 @@ assign      pos_query = pos_query_r;
             valid_r <= valid_w;
             data_query_r <= data_query_w;
             data_ref_r <= data_ref_w;
-            H_out[0] <= H[0];
-            H_out_previous[0] <= H_out[0];
-            I_out[0] <= I[0];
-            D_out[0] <= D[0];
-            H_out[1] <= H[1];
-            H_out_previous[1] <= H_out[1];
-            I_out[1] <= I[1];
-            D_out[1] <= D[1];
-            H_out[2] <= H[2];
-            H_out_previous[2] <= H_out[2];
-            I_out[2] <= I[2];
-            D_out[2] <= D[2];
-            H_out[3] <= H[3];
-            H_out_previous[3] <= H_out[3];
-            I_out[3] <= I[3];
-            D_out[3] <= D[3];
-            H_out[4] <= H[4];
-            H_out_previous[4] <= H_out[4];
-            I_out[4] <= I[4];
-            D_out[4] <= D[4];
-            H_out[5] <= H[5];
-            H_out_previous[5] <= H_out[5];
-            I_out[5] <= I[5];
-            D_out[5] <= D[5];
-            H_out[6] <= H[6];
-            H_out_previous[6] <= H_out[6];
-            I_out[6] <= I[6];
-            D_out[6] <= D[6];
-            H_out[7] <= H[7];
-            H_out_previous[7] <= H_out[7];
-            I_out[7] <= I[7];
-            D_out[7] <= D[7];
-            H_out[8] <= H[8];
-            H_out_previous[8] <= H_out[8];
-            I_out[8] <= I[8];
-            D_out[8] <= D[8];
-            H_out[9] <= H[9];
-            H_out_previous[9] <= H_out[9];
-            I_out[9] <= I[9];
-            D_out[9] <= D[9];
-            H_out[10] <= H[10];
-            H_out_previous[10] <= H_out[10];
-            I_out[10] <= I[10];
-            D_out[10] <= D[10];
-            H_out[11] <= H[11];
-            H_out_previous[11] <= H_out[11];
-            I_out[11] <= I[11];
-            D_out[11] <= D[11];
-            H_out[12] <= H[12];
-            H_out_previous[12] <= H_out[12];
-            I_out[12] <= I[12];
-            D_out[12] <= D[12];
-            H_out[13] <= H[13];
-            H_out_previous[13] <= H_out[13];
-            I_out[13] <= I[13];
-            D_out[13] <= D[13];
-            H_out[14] <= H[14];
-            H_out_previous[14] <= H_out[14];
-            I_out[14] <= I[14];
-            D_out[14] <= D[14];
-            H_out[15] <= H[15];
-            H_out_previous[15] <= H_out[15];
-            I_out[15] <= I[15];
-            D_out[15] <= D[15];
+            for ( i = 0; i < 16; i=i+1) begin
+                H_out[i] <= H[i];
+                H_out_previous[i] <= H_out[i];
+                I_out[i] <= I[i];
+                D_out[i] <= D[i];
+            end
             H_last[index_i[15]] <= H[15];
             I_last[index_i[15]] <= I[15];
             
-            // $display("H_out[0] = %d, H_out[1] = %d, H_out[2] = %d, H_out[3] = %d, max_r = %d", H_out[0], H_out[1], H_out[2], H_out[3], max_r);
-            // if (index_j[2] == 15)
-            //     $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[2], D_out[2],  H_out[2], index_i[2], index_j[2], H_out_previous[2]);
-            // if (index_j[0] == 17)
-            //     $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[0], D_out[0],  H_out[0], index_i[0], index_j[0], H_out_previous[2]);
-            // if (index_j[1] == 14)
-            //     $display("I = %d, D = %d, H = %d, index_i = %d, index_j = %d, H_previous = %d", I_out[1], D_out[1],  H_out[1], index_i[1], index_j[1], H_out_previous[1]);
         end
     end
     

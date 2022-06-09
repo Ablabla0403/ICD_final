@@ -1,5 +1,5 @@
 ncverilog: 15.20-s084: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s084: Started on Jun 09, 2022 at 21:16:34 CST
+TOOL:	ncverilog	15.20-s084: Started on Jun 09, 2022 at 22:47:14 CST
 ncverilog
 	tb.v
 	SW.v
@@ -16,10 +16,10 @@ file: SW.v
 	Elaborating the design hierarchy:
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.PE:v <0x5701c08b>
+		worklib.PE:v <0x25227331>
 			streams:   1, words:  1838
-		worklib.SW:v <0x4d7f5d1f>
-			streams: 124, words: 125434
+		worklib.SW:v <0x5a7663a0>
+			streams: 122, words: 136779
 		worklib.tb:v <0x70b0fa64>
 			streams:  10, words: 18831
 	Building instance specific data structures.
@@ -30,7 +30,7 @@ file: SW.v
 		Registers:              128      68
 		Scalar wires:             4       -
 		Vectored wires:         165       -
-		Always blocks:           24       9
+		Always blocks:           23       8
 		Initial blocks:           8       8
 		Cont. assignments:        0       4
 		Pseudo assignments:     113     113
@@ -60,4 +60,4 @@ ncsim> run
 Simulation complete via $finish(1) at time 2770 NS + 0
 ./tb.v:134           $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s084: Exiting on Jun 09, 2022 at 21:16:39 CST  (total: 00:00:05)
+TOOL:	ncverilog	15.20-s084: Exiting on Jun 09, 2022 at 22:47:19 CST  (total: 00:00:05)
