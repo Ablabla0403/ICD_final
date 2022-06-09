@@ -1,5 +1,5 @@
 ncverilog: 15.20-s084: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s084: Started on Jun 08, 2022 at 04:28:47 CST
+TOOL:	ncverilog	15.20-s084: Started on Jun 09, 2022 at 21:16:34 CST
 ncverilog
 	tb.v
 	SW.v
@@ -18,8 +18,8 @@ file: SW.v
 	Generating native compiled code:
 		worklib.PE:v <0x5701c08b>
 			streams:   1, words:  1838
-		worklib.SW:v <0x06f0fe97>
-			streams: 124, words: 128466
+		worklib.SW:v <0x4d7f5d1f>
+			streams: 124, words: 125434
 		worklib.tb:v <0x70b0fa64>
 			streams:  10, words: 18831
 	Building instance specific data structures.
@@ -60,4 +60,4 @@ ncsim> run
 Simulation complete via $finish(1) at time 2770 NS + 0
 ./tb.v:134           $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s084: Exiting on Jun 08, 2022 at 04:28:51 CST  (total: 00:00:04)
+TOOL:	ncverilog	15.20-s084: Exiting on Jun 09, 2022 at 21:16:39 CST  (total: 00:00:05)
